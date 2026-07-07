@@ -17,7 +17,10 @@
   }
   header h1 { font-size: 15px; margin: 0; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   header .sub { font-size: 11px; opacity: .8; font-weight: 400; }
-  #searchBox { margin-left: auto; display: flex; gap: 6px; }
+  #searchBox { margin-left: auto; display: flex; gap: 6px; align-items: center; }
+  a.hbtn { background: #e8a33d; color: #1a3a5c; font-weight: 700; font-size: 12px; padding: 6px 10px;
+    border-radius: 4px; text-decoration: none; white-space: nowrap; }
+  a.hbtn:hover { background: #f5b855; }
   #searchBox input { border: none; border-radius: 4px; padding: 6px 10px; font-size: 13px; width: 230px; max-width: 40vw; }
   #searchBox button { border: none; border-radius: 4px; padding: 6px 12px; font-size: 13px; background: #e8a33d; color: #1a3a5c; font-weight: 600; cursor: pointer; }
   #searchBox button:hover { background: #f5b855; }
@@ -80,6 +83,7 @@
     <div class="sub">Lewis County, WV &nbsp;•&nbsp; Route: vltransmission.com &nbsp;•&nbsp; Parcels: mapwv.gov (live)</div>
   </div>
   <div id="searchBox">
+    <a class="hbtn" href="impact.html">📋 Impact list</a>
     <input id="q" type="text" placeholder="Owner name or address in Lewis County" onkeydown="if(event.key==='Enter')doSearch()">
     <button onclick="doSearch()">Search</button>
   </div>
