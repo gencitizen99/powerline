@@ -91,7 +91,7 @@
 <div id="map"></div>
 <div id="zoomHint">Zoom in to see property lines &amp; click parcels for owner info</div>
 <div id="results"><div class="rhead">Results <span class="close" onclick="hideResults()">✕</span></div><div id="rlist"></div></div>
-<footer class="credit">Unofficial community map &nbsp;•&nbsp; Route data as of July 6, 2026 &nbsp;•&nbsp; <a href="#" onclick="document.getElementById('about').style.display='flex';return false">ⓘ About this map &amp; data sources</a> &nbsp;•&nbsp; <a href="impact.html">Impact estimates</a> &nbsp;•&nbsp; <a href="donations.html">Developer donations</a></footer>
+<footer class="credit">Unofficial community map &nbsp;•&nbsp; Route data as of July 6, 2026 &nbsp;•&nbsp; <a href="#" onclick="document.getElementById('about').style.display='flex';return false">ⓘ About this map &amp; data sources</a> &nbsp;•&nbsp; <a href="impact.html">Impact estimates</a> &nbsp;•&nbsp; <a href="donations.html">Developer donations</a> &nbsp;•&nbsp; <a href="about.html">About</a></footer>
 
 <div id="about">
   <div class="abox">
@@ -341,6 +341,13 @@ function doSearch() {
           if (searchHl) map.removeLayer(searchHl);
           searchHl = lyr.addTo(map);
           map.fitBounds(lyr.getBounds().pad(0.4));
+          const c = lyr.getBounds().getCenter();
+          const pid = f.properties.CleanParcelID;
+          lyr.bindPopup('<div class="popup-parcel"><h3>' + escTxt(f.properties.FullOwnerName || '—') + '</h3>'
+            + escTxt(f.properties.FullPhysicalAddress || '')
+            + '<div style="font-size:12.5px">' + districtLines(c.lat, c.lng) + '</div>'
+            + (pid ? '<div style="margin-top:6px"><a href="https://mapwv.gov/parcel/?pid=' + encodeURIComponent(pid) + '" target="_blank" rel="noopener">Official parcel record →</a></div>' : '')
+            + '</div>', { minWidth: 240 }).openPopup();
         };
         secP.appendChild(div);
       });

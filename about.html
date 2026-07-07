@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Valley North Community Maps</title>
+<style>
+  :root {
+    --paper: #F0EEE6;
+    --ink: #1B1D1F;
+    --ink-soft: #4A4D50;
+    --line-blue: #37505F;
+    --line-blue-light: #E7EEF0;
+    --amber: #A9700B;
+    --amber-bg: #FBF0DD;
+    --rule: #C9C4B6;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: Georgia, 'Times New Roman', serif; line-height: 1.6; }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 48px 24px 80px; }
+  header.masthead { border-bottom: 3px solid var(--ink); padding-bottom: 20px; margin-bottom: 28px; }
+  .kicker { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--line-blue); font-weight: 700; margin-bottom: 10px; }
+  h1 { font-size: 34px; line-height: 1.2; margin: 0 0 10px; }
+  .dek { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--ink-soft); font-size: 16px; margin: 0; }
+  .nav { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; margin-top: 14px; }
+  .nav a { margin-right: 14px; white-space: nowrap; }
+  .disclaimer { background: var(--amber-bg); border-left: 4px solid var(--amber); padding: 14px 18px; margin: 0 0 28px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14.5px; }
+  .disclaimer strong { color: var(--amber); }
+  .status-bar { display: flex; flex-wrap: wrap; gap: 16px; background: var(--line-blue-light); border-left: 4px solid var(--line-blue); padding: 16px 20px; margin: 28px 0 8px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14.5px; }
+  .status-item { flex: 1; min-width: 220px; }
+  .status-item .label { display: block; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--line-blue); font-weight: 700; margin-bottom: 4px; }
+  h2.sec { font-size: 22px; border-bottom: 1px solid var(--rule); padding-bottom: 6px; margin: 36px 0 6px; }
+  section.point { padding: 16px 0; border-bottom: 1px solid var(--rule); }
+  section.point:last-of-type { border-bottom: none; }
+  .point-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 4px; }
+  .num { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 13px; font-weight: 700; color: var(--paper); background: var(--ink); width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .point h3 { font-size: 18px; margin: 0; }
+  .point p { margin: 8px 0; font-size: 15.5px; }
+  .callout { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--amber-bg); border-left: 4px solid var(--amber); padding: 10px 14px; font-size: 14px; margin: 10px 0 4px; }
+  .callout strong { color: var(--amber); }
+  a { color: var(--line-blue); }
+  a:hover { color: var(--ink); }
+  .contact-box { margin-top: 36px; background: var(--ink); color: var(--paper); padding: 26px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+  .contact-box h2 { font-family: Georgia, serif; font-size: 19px; margin-top: 0; color: #fff; }
+  .contact-box h3 { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #cbc6b8; margin: 18px 0 6px; }
+  .contact-box h3:first-of-type { margin-top: 0; }
+  .contact-box p, .contact-box li { font-size: 15px; margin: 4px 0; }
+  .contact-box ul { margin: 4px 0 0; padding-left: 20px; }
+  .contact-box a { color: #ffd280; }
+  footer.sources { margin-top: 44px; padding-top: 20px; border-top: 3px solid var(--ink); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+  footer.sources h3 { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 12px; }
+  footer.sources ol { font-size: 13.5px; color: var(--ink-soft); padding-left: 18px; }
+  footer.sources li { margin-bottom: 6px; }
+  @media (max-width: 600px) { h1 { font-size: 27px; } .status-bar { flex-direction: column; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="kicker">Valley North Community Maps &middot; Lewis County, WV</div>
+    <h1>About</h1>
+    <p class="dek">Who made this site, where the information comes from, and what landowners can do.</p>
+    <div class="nav">
+      <a href="index.html">Lewis County map</a>
+      <a href="full-route.html">Full route map</a>
+      <a href="impact.html">Property impact estimates</a>
+      <a href="donations.html">Developer donations</a>
+    </div>
+  </header>
+
+  <div class="disclaimer">
+    <strong>This is an unofficial site made by a community member.</strong> It is not affiliated with, endorsed by, or produced by Valley Link Transmission LLC, the Valley North project, PJM, or any government agency. The proposed routes shown on the maps are <strong>preliminary and subject to change</strong> — for the latest official information visit <a href="https://vltransmission.com/valley-north/" target="_blank" rel="noopener">vltransmission.com/valley-north</a>. Everything here comes from public records and public map data, cited on each page. It is community information, not legal or surveying advice. Corrections are welcome: <a href="mailto:pizzapizza1987@proton.me">pizzapizza1987@proton.me</a>
+  </div>
+
+  <h2 class="sec">The short version of the siting fight</h2>
+
+  <div class="status-bar">
+    <div class="status-item">
+      <span class="label">Federal backstop</span>
+      Currently none. DOE dropped this corridor from federal designation in late 2024 — the WV Public Service Commission has the final say, and FERC cannot override a &ldquo;no.&rdquo;
+    </div>
+    <div class="status-item">
+      <span class="label">Where this is decided</span>
+      Not at open houses. In the formal PSC siting case under WV Code &sect;24-2-11a, expected once Valley Link files (fall 2026 or later).
+    </div>
+  </div>
+
+  <section class="point">
+    <div class="point-head"><span class="num">1</span><h3>Open houses don't win this. Intervening does.</h3></div>
+    <p>Open-house comments shape the route but create no legal record. Only <strong>formal intervenors</strong> in the PSC case get discovery, expert testimony, cross-examination, and appeal rights.</p>
+    <div class="callout"><strong>Do this:</strong> organize with neighbors and jointly hire one lawyer. Fifty families splitting the cost is manageable; alone usually isn't.</div>
+  </section>
+
+  <section class="point">
+    <div class="point-head"><span class="num">2</span><h3>Fight the need, not just the path.</h3></div>
+    <p>Moving the route off your land puts it on a neighbor's. The stronger target: the line is justified by Northern Virginia data-center demand forecasts that critics call inflated, alternatives like upgrading existing lines were arguably never seriously studied, and WV ratepayers could pay hundreds of millions while the power benefits Virginia.</p>
+  </section>
+
+  <section class="point">
+    <div class="point-head"><span class="num">3</span><h3>Land agents are working now — before any protections apply.</h3></div>
+    <p>Valley Link has no eminent-domain power until it holds a siting certificate, so everything signed in 2026 is voluntary — and agents move early to lock in cheap deals.</p>
+    <div class="callout"><strong>Do this:</strong> don't sign a right-of-entry or option agreement without a lawyer. Terms matter as much as price — access roads, herbicide use, future lines, timber payment, liability. Write down every agent contact.</div>
+  </section>
+
+  <section class="point">
+    <div class="point-head"><span class="num">4</span><h3>Federal permits are still pressure points.</h3></div>
+    <p>Stream crossings, protected bat habitat, and Army Corps land near Stonewall Jackson and Burnsville lakes all trigger federal review. Historic sites like Jackson's Mill and Weston's historic district support visual-impact objections.</p>
+  </section>
+
+  <section class="point">
+    <div class="point-head"><span class="num">5</span><h3>Conservation easements change the routing math — if done now.</h3></div>
+    <p>Land under a farmland-protection easement, especially a federal one, is far harder to condemn. Enrolling willing farms before the route is final can genuinely push the line elsewhere.</p>
+  </section>
+
+  <section class="point">
+    <div class="point-head"><span class="num">6</span><h3>Don't do this alone.</h3></div>
+    <p>The Hampshire County (MARL) fight is a year ahead of ours before the same commission. Sharing experts and lawyers across fights cuts everyone's costs, and county resolutions of opposition become part of the record.</p>
+  </section>
+
+  <section class="point">
+    <div class="point-head"><span class="num">7</span><h3>Lawmakers failed to act this year — use that.</h3></div>
+    <p>A landowner-protection bill died in the 2026 session, and the next session lines up with the siting case. Ask your representatives directly: will you sponsor a landowner-protection bill — yes or no? (See <a href="donations.html">what they've received from the developers</a>.)</p>
+  </section>
+
+  <div class="contact-box">
+    <h2>Contact the officials who decide this</h2>
+
+    <h3>WV Public Service Commission — decides whether the line is approved</h3>
+    <ul>
+      <li>Website: <a href="http://www.psc.state.wv.us/" target="_blank" rel="noopener">psc.state.wv.us</a> &middot; toll-free <a href="tel:18006428544">1-800-642-8544</a></li>
+      <li><a href="http://www.psc.state.wv.us/complaints/default.htm" target="_blank" rel="noopener">Request assistance or file a complaint</a> (online form available)</li>
+      <li>Mail: Public Service Commission of WV, 201 Brooks Street, PO Box 812, Charleston, WV 25323</li>
+      <li>Once Valley Link files its siting case, public comments and intervention go through that case docket on the PSC site — this page will link it.</li>
+    </ul>
+
+    <h3>Your state legislators — write the siting rules</h3>
+    <ul>
+      <li><a href="https://www.wvlegislature.gov/Senate1/roster.cfm" target="_blank" rel="noopener">Senate roster</a> and <a href="https://www.wvlegislature.gov/House/roster.cfm" target="_blank" rel="noopener">House of Delegates roster</a> — each member's page lists phone, office, and email.</li>
+      <li>Not sure who yours are? <a href="https://www.wvlegislature.gov/districts/maps.cfm" target="_blank" rel="noopener">District maps at wvlegislature.gov</a> — or search your address on <a href="index.html">our map</a> and the popup names your senators and delegate.</li>
+      <li>Lewis County: Sens. Ben Queen &amp; Patrick Martin (District 12); Del. Adam Burkhammer (District 64); Del. Keith Marple (District 69, northern Lewis).</li>
+    </ul>
+
+    <h3>This site</h3>
+    <p>Questions, corrections, or data requests: <a href="mailto:pizzapizza1987@proton.me">pizzapizza1987@proton.me</a></p>
+  </div>
+
+  <footer class="sources">
+    <h3>Sources</h3>
+    <ol>
+      <li><a href="https://www.energy.gov/oe/national-interest-electric-transmission-corridor-designation-process" target="_blank" rel="noopener">U.S. Department of Energy — NIETC designation process</a></li>
+      <li><a href="https://www.powermag.com/doe-advances-three-potential-nietcs-high-priority-national-electric-transmission-corridors/" target="_blank" rel="noopener">POWER Magazine — "DOE Advances Three Potential NIETCs"</a></li>
+      <li><a href="https://www.federalregister.gov/documents/2024/12/16/2024-29419/notice-of-early-public-and-governmental-engagement-for-potential-designation-of-tribal-energy-access" target="_blank" rel="noopener">Federal Register — corridor engagement notice, Dec. 2024</a></li>
+      <li><a href="https://code.wvlegislature.gov/24-2-11A/" target="_blank" rel="noopener">West Virginia Code &sect;24-2-11a</a></li>
+      <li><a href="https://wchstv.com/news/local/proposed-1075-mile-extension-cord-could-leave-wva-ratepayers-on-hook-for-440m-900m" target="_blank" rel="noopener">WCHS-TV — projected ratepayer costs of the MARL project</a></li>
+      <li><a href="https://stopmarlvirginia.com/" target="_blank" rel="noopener">Stop MARL Virginia / Stop Valley Link coalition</a></li>
+      <li><a href="https://blog.wvlegislature.gov/interim-report-2/2026/01/13/interim-report-joint-committee-on-energy-and-public-works/" target="_blank" rel="noopener">WV Legislature — Joint Committee on Energy and Public Works interim report, Jan. 2026</a></li>
+      <li><a href="https://www.hampshirereview.com/news/article_65ed7b76-4663-440d-8457-de9258ee2ed5.html" target="_blank" rel="noopener">The Hampshire Review — Valley North coverage</a></li>
+    </ol>
+  </footer>
+
+</div>
+</body>
+</html>
