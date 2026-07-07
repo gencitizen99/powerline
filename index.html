@@ -84,7 +84,7 @@
   </div>
   <div id="searchBox">
     <a class="hbtn" href="impact.html">📋 Impact list</a>
-    <input id="q" type="text" placeholder="Owner name or address in Lewis County" onkeydown="if(event.key==='Enter')doSearch()">
+    <input id="q" type="text" placeholder="Address or owner name in Lewis County" onkeydown="if(event.key==='Enter')doSearch()">
     <button onclick="doSearch()">Search</button>
   </div>
 </header>
@@ -99,6 +99,7 @@
     <p><b>This is an unofficial map made by a community member.</b> It is not affiliated with, endorsed by, or produced by Valley Link Transmission LLC, the Valley North project, PJM, or any government agency.</p>
     <div class="warn"><b>The proposed routes shown here are preliminary and subject to change.</b> For the latest official information, visit the project website: <a href="https://vltransmission.com/valley-north/" target="_blank" rel="noopener">vltransmission.com/valley-north</a></div>
     <ul>
+      <li><b>Address search:</b> OpenStreetMap Nominatim geocoder (&copy; OpenStreetMap contributors).</li>
       <li><b>Legislative districts (optional overlay):</b> WV Legislature 2021 redistricting boundaries via the WVU GIS Tech Center; contribution totals from public campaign-finance filings (cfrs.wvsos.gov) — see the <a href="donations.html">Developer donations</a> page.</li>
       <li><b>Proposed route, corridor &amp; substations:</b> map data published by the developer at vltransmission.com, downloaded <b>July 6, 2026</b>.</li>
       <li><b>Property lines &amp; owner information:</b> streamed live from the West Virginia Property Viewer (<a href="https://mapwv.gov/parcel/" target="_blank" rel="noopener">mapwv.gov</a>), maintained by the WV GIS Technical Center from county assessor records. Shown as-is and may contain errors — verify important details with your county assessor.</li>
@@ -223,20 +224,113 @@ function hideResults() {
   document.getElementById('results').style.display = 'none';
   if (searchHl) { map.removeLayer(searchHl); searchHl = null; }
 }
+var addrMarker = null;
+function escTxt(s) { return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+function pipDistrict(lon, lat, gj) {
+  function inRing(x, y, ring) {
+    var inside = false;
+    for (var i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+      var xi = ring[i][0], yi = ring[i][1], xj = ring[j][0], yj = ring[j][1];
+      if (((yi > y) !== (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi)) inside = !inside;
+    }
+    return inside;
+  }
+  function inPoly(x, y, poly) {
+    if (!poly.length || !inRing(x, y, poly[0])) return false;
+    for (var k = 1; k < poly.length; k++) if (inRing(x, y, poly[k])) return false;
+    return true;
+  }
+  for (var f = 0; f < gj.features.length; f++) {
+    var g = gj.features[f].geometry;
+    var polys = g.type === 'Polygon' ? [g.coordinates] : g.coordinates;
+    for (var p = 0; p < polys.length; p++)
+      if (inPoly(lon, lat, polys[p])) return gj.features[f].properties.DISTRICT;
+  }
+  return null;
+}
+function districtLines(lat, lon) {
+  var fmt$ = function (n) { return '$' + Math.round(n).toLocaleString('en-US'); };
+  var h = '';
+  if (typeof DIST_HOUSE !== 'undefined') {
+    var hd = pipDistrict(lon, lat, DIST_HOUSE);
+    if (hd && DIST_REPS.house[hd]) {
+      var m = DIST_REPS.house[hd];
+      h += '<br><b>WV House D' + hd + ':</b> Del. ' + m.member + ' (R)'
+        + (m.total > 0 ? ' — <b>' + fmt$(m.total) + '</b> from developers' : '');
+    }
+    var sd = pipDistrict(lon, lat, DIST_SENATE);
+    if (sd && DIST_REPS.senate[sd]) {
+      h += '<br><b>WV Senate D' + sd + ':</b> ' + DIST_REPS.senate[sd].map(function (s) {
+        return 'Sen. ' + s.member + (s.total > 0 ? ' (<b>' + fmt$(s.total) + '</b>)' : '');
+      }).join(' &amp; ');
+    }
+    if (h) h += '<div style="margin-top:4px;font-size:12px"><a href="donations.html" target="_blank">What your representatives received →</a></div>';
+  }
+  return h;
+}
+function showAddress(lat, lon, label) {
+  hideResults();
+  if (addrMarker) map.removeLayer(addrMarker);
+  addrMarker = L.marker([lat, lon]).addTo(map);
+  map.setView([lat, lon], 17);
+  var html = '<div class="popup-parcel"><h3>' + escTxt(label) + '</h3>'
+    + '<div style="font-size:12.5px">' + districtLines(lat, lon) + '</div>'
+    + '<div style="font-size:11px;color:#888;margin-top:6px">Click the parcel under the pin for owner &amp; acreage.</div></div>';
+  addrMarker.bindPopup(html, { minWidth: 240 }).openPopup();
+}
 function doSearch() {
-  const q = document.getElementById('q').value.trim().toUpperCase().replace(/'/g, "''");
-  if (!q) return;
+  const raw = document.getElementById('q').value.trim();
+  if (!raw) return;
+  const q = raw.toUpperCase().replace(/'/g, "''");
   const rlist = document.getElementById('rlist');
-  rlist.innerHTML = '<div class="item">Searching…</div>';
   document.getElementById('results').style.display = 'block';
+  rlist.innerHTML = '';
+  const secA = document.createElement('div');
+  const secP = document.createElement('div');
+  secP.innerHTML = '<div class="item">Searching…</div>';
+  rlist.appendChild(secA); rlist.appendChild(secP);
+  let doneA = false, doneP = false, hitA = false, hitP = false;
+  function heading(t) {
+    return '<div class="item" style="font-size:11px;color:#777;text-transform:uppercase;letter-spacing:.4px;background:#f4f6f8;cursor:default">' + t + '</div>';
+  }
+  function maybeEmpty() {
+    if (doneA && doneP && !hitA && !hitP)
+      rlist.innerHTML = '<div class="item">Nothing found. Try a street address ("239 Court Ave Weston") or just a last name.</div>';
+  }
+
+  // 1) Street addresses — OpenStreetMap geocoder, limited to the map area
+  fetch('https://nominatim.openstreetmap.org/search?format=jsonv2&limit=4&countrycodes=us&bounded=1&viewbox=-80.95,39.30,-80.15,38.75&q=' + encodeURIComponent(raw))
+    .then(function (r) { return r.json(); })
+    .then(function (res) {
+      doneA = true;
+      if (res && res.length) {
+        hitA = true;
+        secA.innerHTML = heading('Addresses');
+        res.forEach(function (a) {
+          var parts = (a.display_name || '').split(', ');
+          var label = parts.slice(0, 4).join(', ');
+          var div = document.createElement('div');
+          div.className = 'item';
+          div.innerHTML = '<div class="own">📍 ' + escTxt(label) + '</div>';
+          div.onclick = function () { showAddress(+a.lat, +a.lon, label); };
+          secA.appendChild(div);
+        });
+      }
+      maybeEmpty();
+    })
+    .catch(function () { doneA = true; maybeEmpty(); });
+
+  // 2) Property records (owner name or the county's address field)
   L.esri.query({ url: PARCEL_SVC + '/0' })
     .where("CountyID='21' AND (UPPER(FullOwnerName) LIKE '%" + q + "%' OR UPPER(FullPhysicalAddress) LIKE '%" + q + "%')")
     .limit(25)
     .fields(['FullOwnerName', 'FullPhysicalAddress', 'CleanParcelID'])
     .run(function (err, fc) {
-      if (err) { rlist.innerHTML = '<div class="item">Search failed — check your internet connection and try again.</div>'; return; }
-      if (!fc.features.length) { rlist.innerHTML = '<div class="item">No matches found in Lewis County. Try just a last name.</div>'; return; }
-      rlist.innerHTML = '';
+      doneP = true;
+      if (err) { secP.innerHTML = '<div class="item">Property search failed — check your internet connection and try again.</div>'; return; }
+      if (!fc.features.length) { secP.innerHTML = ''; maybeEmpty(); return; }
+      hitP = true;
+      secP.innerHTML = heading('Property records (Lewis County)');
       fc.features.forEach(function (f) {
         const div = document.createElement('div');
         div.className = 'item';
@@ -248,7 +342,7 @@ function doSearch() {
           searchHl = lyr.addTo(map);
           map.fitBounds(lyr.getBounds().pad(0.4));
         };
-        rlist.appendChild(div);
+        secP.appendChild(div);
       });
     });
 }
