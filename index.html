@@ -91,7 +91,7 @@
 <div id="map"></div>
 <div id="zoomHint">Zoom in to see property lines &amp; click parcels for owner info</div>
 <div id="results"><div class="rhead">Results <span class="close" onclick="hideResults()">✕</span></div><div id="rlist"></div></div>
-<footer class="credit">Unofficial community map &nbsp;•&nbsp; Route data as of July 6, 2026 &nbsp;•&nbsp; <a href="#" onclick="document.getElementById('about').style.display='flex';return false">ⓘ About this map &amp; data sources</a> &nbsp;•&nbsp; <a href="impact.html">Impact estimates</a> &nbsp;•&nbsp; <a href="donations.html">Developer donations</a> &nbsp;•&nbsp; <a href="about.html">About</a></footer>
+<footer class="credit">Unofficial community map &nbsp;•&nbsp; Route data as of July 6, 2026 &nbsp;•&nbsp; <a href="#" onclick="document.getElementById('about').style.display='flex';return false">ⓘ About this map &amp; data sources</a> &nbsp;•&nbsp; <a href="impact.html">Impact estimates</a> &nbsp;•&nbsp; <a href="counties.html">All counties</a> &nbsp;•&nbsp; <a href="donations.html">Developer donations</a> &nbsp;•&nbsp; <a href="about.html">About</a></footer>
 
 <div id="about">
   <div class="abox">
@@ -264,7 +264,7 @@ function districtLines(lat, lon) {
         return 'Sen. ' + s.member + (s.total > 0 ? ' (<b>' + fmt$(s.total) + '</b>)' : '');
       }).join(' &amp; ');
     }
-    if (h) h += '<div style="margin-top:4px;font-size:12px"><a href="donations.html" target="_blank">What your representatives received →</a></div>';
+    if (h) h += '<div style="margin-top:4px;font-size:12px"><a href="donations-lewis.html" target="_blank">What your representatives received →</a></div>';
   }
   return h;
 }
@@ -408,7 +408,7 @@ const DIST_REPS = {"house": {"8": {"member": "Bill Bell", "total": 0, "breakdown
       (DIST_REPS.senate[d] || []).forEach(m => { h += memberHtml(m, 'Sen.'); });
     }
     h += '<div style="font-size:11px;color:#888;margin-top:6px">Public campaign-finance records (AEP/Appalachian Power, Dominion, FirstEnergy; NextEra = separate MARL project).</div>'
-      + '<div style="margin-top:6px"><a href="donations.html" target="_blank">All donations &amp; details →</a></div></div>';
+      + '<div style="margin-top:6px"><a href="donations-lewis.html" target="_blank">All donations &amp; details →</a></div></div>';
     return h;
   }
   const houseDistricts = L.geoJSON(DIST_HOUSE, {
