@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Valley North — Opposition &amp; Legislator Scoreboard</title>
+<style>
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f4f6f8; color: #222; }
+  header { background: #1a3a5c; color: #fff; padding: 14px 16px; }
+  header h1 { margin: 0; font-size: 18px; }
+  header .sub { font-size: 12px; opacity: .85; margin-top: 3px; }
+  header a { color: #ffd280; }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 14px; }
+  .warn { background: #fff3e0; border-left: 5px solid #e8a33d; padding: 12px 14px; border-radius: 0 6px 6px 0; margin: 0 0 14px; font-size: 14px; line-height: 1.5; }
+  .warn a, footer a, td a { color: #1a5ca8; }
+  .stats { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+  .card { background: #fff; border-radius: 8px; padding: 10px 16px; box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+  .card .n { font-size: 22px; font-weight: 700; }
+  .card .l { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: .3px; }
+  h2 { font-size: 16px; color: #1a3a5c; margin: 22px 2px 4px; }
+  .h2sub { font-size: 12px; color: #777; margin: 0 2px 8px; }
+  .h2sub a { color: #1a5ca8; }
+  .bar { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin: 8px 0; }
+  .bar input, .bar select { padding: 8px 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 13px; background: #fff; }
+  .bar input { flex: 1; min-width: 180px; }
+  table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.12); font-size: 13px; }
+  th { background: #1a3a5c; color: #fff; text-align: left; padding: 8px 10px; font-size: 11px; text-transform: uppercase; letter-spacing: .3px; }
+  td { padding: 8px 10px; border-top: 1px solid #eee; vertical-align: top; }
+  td.num, th.num { text-align: right; white-space: nowrap; }
+  .badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 9px; border-radius: 10px; color: #fff; white-space: nowrap; }
+  .cnts { color: #555; font-size: 12px; }
+  .count { font-size: 12px; color: #777; margin: 6px 2px; }
+  footer { font-size: 11px; color: #666; padding: 16px 2px 30px; line-height: 1.6; }
+  @media (max-width: 640px) { .hidemob { display: none; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Valley North: opposition &amp; legislator scoreboard</h1>
+  <div class="sub">Unofficial community tracker &nbsp;•&nbsp; <a href="counties.html">All counties &amp; parcels</a> &nbsp;•&nbsp; <a href="donations.html">Developer donations</a> &nbsp;•&nbsp; <a href="about.html">About</a></div>
+</header>
+<div class="wrap">
+
+  <div class="warn"><b>What this tracks:</b> (1) formal action by county governments on the proposed Valley North 765&nbsp;kV line, and (2) every West Virginia state legislator who represents an impacted county, with their position as it becomes known. County resolutions and legislator statements aren&rsquo;t binding on the PSC, but they shape the public record and the politics. Maintained by a community member — <a href="mailto:pizzapizza1987@proton.me">send corrections or updates</a> with a link to the article, minutes, or statement.</div>
+
+  <h2>Counties</h2>
+  <div class="h2sub">Where each impacted county government stands.</div>
+  <div class="stats" id="cards"></div>
+  <table>
+    <thead><tr><th>County</th><th>Status</th><th>What happened</th><th>Source</th></tr></thead>
+    <tbody id="ctb"></tbody>
+  </table>
+
+  <h2>Legislators representing impacted counties</h2>
+  <div class="h2sub">Every state senator and delegate whose district covers at least one county on the route. &ldquo;Developer $&rdquo; = what they received from the Valley North companies (see <a href="donations.html">donations</a>).</div>
+  <div class="bar">
+    <input id="q" type="search" placeholder="Search legislator, county, or district…">
+    <select id="pf">
+      <option value="">All positions</option>
+      <option value="opposed">Opposed the line</option>
+      <option value="mixed">Mixed / noncommittal</option>
+      <option value="supports">Supports the line</option>
+      <option value="unknown">Position unknown</option>
+    </select>
+    <select id="cf"><option value="">All counties</option><option value="Barbour">Barbour</option><option value="Berkeley">Berkeley</option><option value="Braxton">Braxton</option><option value="Calhoun">Calhoun</option><option value="Doddridge">Doddridge</option><option value="Gilmer">Gilmer</option><option value="Grant">Grant</option><option value="Hampshire">Hampshire</option><option value="Hardy">Hardy</option><option value="Harrison">Harrison</option><option value="Jackson">Jackson</option><option value="Jefferson">Jefferson</option><option value="Kanawha">Kanawha</option><option value="Lewis">Lewis</option><option value="Preston">Preston</option><option value="Putnam">Putnam</option><option value="Randolph">Randolph</option><option value="Roane">Roane</option><option value="Tucker">Tucker</option><option value="Upshur">Upshur</option></select>
+    <select id="sf">
+      <option value="cham">Sort: chamber &amp; district</option>
+      <option value="money">Sort: most developer $</option>
+      <option value="name">Sort: name A→Z</option>
+    </select>
+  </div>
+  <div class="count" id="lcount"></div>
+  <table>
+    <thead><tr><th>Legislator</th><th class="hidemob">Represents (impacted counties)</th><th class="num">Developer $</th><th>Position</th></tr></thead>
+    <tbody id="ltb"></tbody>
+  </table>
+
+  <footer>
+    Legislators are matched to counties from the official 2021 redistricting boundaries; a district counts if it covers any part of an impacted county. Developer contributions are from public campaign-finance filings (see <a href="donations.html">Developer donations</a> for sources). Positions reflect public statements known to the maintainer as of the date noted — blank means not yet known, not neutral. Community information, not legal advice.
+  </footer>
+</div>
+<script>
+/* ==========================================================================
+   TO UPDATE: edit the two blocks below, then save / commit. Nothing else.
+
+   COUNTIES — one entry per county:
+     status: 'passed' (resolution adopted) | 'drafting' (being written / on agenda)
+           | 'discussed' (publicly discussed, no vote) | 'none' (no known action)
+     date, note (one sentence), source (link or '')
+
+   LEGISLATORS — key is "House-<district>" or "Senate-<district>":
+     stance: 'opposed' | 'supports' | 'mixed' | 'unknown'
+     note (one sentence), source (link or '')
+   ========================================================================== */
+const OPPOSITION = {
+  Barbour: { status: 'passed', date: '2026', note: "County Commission passed the \"Resolution for Kelley Road and Hunter\u2019s Fork Landowners Regarding Opposition to Valley Link Transmission Project.\"", source: "https://barbourcountywv.gov/valley-north-project-a-765-kv-valley-link-transmission-project/" },
+  Berkeley: { status: 'none', date: '', note: "", source: "" },
+  Braxton: { status: 'none', date: '', note: "", source: "" },
+  Calhoun: { status: 'none', date: '', note: "", source: "" },
+  Doddridge: { status: 'none', date: '', note: "", source: "" },
+  Gilmer: { status: 'none', date: '', note: "", source: "" },
+  Grant: { status: 'none', date: '', note: "", source: "" },
+  Hampshire: { status: 'none', date: '', note: "", source: "" },
+  Hardy: { status: 'none', date: '', note: "", source: "" },
+  Harrison: { status: 'none', date: '', note: "", source: "" },
+  Jackson: { status: 'none', date: '', note: "", source: "" },
+  Jefferson: { status: 'discussed', date: 'July 2026', note: "Commissioners attended the open house; Commissioner Mike Mood publicly noted counties have no siting power \u2014 no formal action yet.", source: "https://wvmetronews.com/2026/07/01/eastern-panhandle-residents-get-a-look-at-massive-transmission-line-project-during-open-house/" },
+  Kanawha: { status: 'none', date: '', note: "", source: "" },
+  Lewis: { status: 'none', date: '', note: "", source: "" },
+  Preston: { status: 'none', date: '', note: "", source: "" },
+  Putnam: { status: 'none', date: '', note: "", source: "" },
+  Randolph: { status: 'none', date: '', note: "", source: "" },
+  Roane: { status: 'none', date: '', note: "", source: "" },
+  Tucker: { status: 'none', date: '', note: "", source: "" },
+  Upshur: { status: 'drafting', date: 'July 2026', note: "County Commission directed staff to draft a resolution opposing the 765,000-volt Valley Link line.", source: "https://www.mybuckhannon.com/upshur-county-commission-to-draft-resolution-opposing-765000-volt-valley-link-power-line/" }
+};
+const POSITION = {
+  'Senate-2': { stance: 'unknown', note: "", source: "" },
+  'Senate-2': { stance: 'unknown', note: "", source: "" },
+  'Senate-4': { stance: 'unknown', note: "", source: "" },
+  'Senate-4': { stance: 'unknown', note: "", source: "" },
+  'Senate-7': { stance: 'unknown', note: "", source: "" },
+  'Senate-7': { stance: 'unknown', note: "", source: "" },
+  'Senate-8': { stance: 'unknown', note: "", source: "" },
+  'Senate-8': { stance: 'unknown', note: "", source: "" },
+  'Senate-11': { stance: 'unknown', note: "", source: "" },
+  'Senate-11': { stance: 'unknown', note: "", source: "" },
+  'Senate-12': { stance: 'unknown', note: "", source: "" },
+  'Senate-12': { stance: 'unknown', note: "", source: "" },
+  'Senate-14': { stance: 'unknown', note: "", source: "" },
+  'Senate-14': { stance: 'unknown', note: "", source: "" },
+  'Senate-15': { stance: 'unknown', note: "", source: "" },
+  'Senate-15': { stance: 'unknown', note: "", source: "" },
+  'Senate-16': { stance: 'unknown', note: "", source: "" },
+  'Senate-16': { stance: 'unknown', note: "", source: "" },
+  'Senate-17': { stance: 'unknown', note: "", source: "" },
+  'Senate-17': { stance: 'unknown', note: "", source: "" },
+  'House-8': { stance: 'unknown', note: "", source: "" },
+  'House-15': { stance: 'unknown', note: "", source: "" },
+  'House-16': { stance: 'unknown', note: "", source: "" },
+  'House-17': { stance: 'unknown', note: "", source: "" },
+  'House-18': { stance: 'unknown', note: "", source: "" },
+  'House-19': { stance: 'unknown', note: "", source: "" },
+  'House-20': { stance: 'unknown', note: "", source: "" },
+  'House-21': { stance: 'unknown', note: "", source: "" },
+  'House-52': { stance: 'unknown', note: "", source: "" },
+  'House-53': { stance: 'unknown', note: "", source: "" },
+  'House-54': { stance: 'unknown', note: "", source: "" },
+  'House-55': { stance: 'unknown', note: "", source: "" },
+  'House-56': { stance: 'unknown', note: "", source: "" },
+  'House-57': { stance: 'unknown', note: "", source: "" },
+  'House-58': { stance: 'unknown', note: "", source: "" },
+  'House-59': { stance: 'unknown', note: "", source: "" },
+  'House-60': { stance: 'unknown', note: "", source: "" },
+  'House-61': { stance: 'unknown', note: "", source: "" },
+  'House-62': { stance: 'unknown', note: "", source: "" },
+  'House-63': { stance: 'unknown', note: "", source: "" },
+  'House-64': { stance: 'unknown', note: "", source: "" },
+  'House-65': { stance: 'unknown', note: "", source: "" },
+  'House-66': { stance: 'unknown', note: "", source: "" },
+  'House-67': { stance: 'unknown', note: "", source: "" },
+  'House-68': { stance: 'unknown', note: "", source: "" },
+  'House-69': { stance: 'unknown', note: "", source: "" },
+  'House-70': { stance: 'unknown', note: "", source: "" },
+  'House-71': { stance: 'unknown', note: "", source: "" },
+  'House-72': { stance: 'unknown', note: "", source: "" },
+  'House-83': { stance: 'unknown', note: "", source: "" },
+  'House-84': { stance: 'unknown', note: "", source: "" },
+  'House-85': { stance: 'unknown', note: "", source: "" },
+  'House-86': { stance: 'unknown', note: "", source: "" },
+  'House-88': { stance: 'unknown', note: "", source: "" },
+  'House-89': { stance: 'unknown', note: "", source: "" },
+  'House-90': { stance: 'unknown', note: "", source: "" },
+  'House-91': { stance: 'unknown', note: "", source: "" },
+  'House-92': { stance: 'unknown', note: "", source: "" },
+  'House-93': { stance: 'unknown', note: "", source: "" },
+  'House-94': { stance: 'unknown', note: "", source: "" },
+  'House-95': { stance: 'unknown', note: "", source: "" },
+  'House-96': { stance: 'unknown', note: "", source: "" },
+  'House-97': { stance: 'unknown', note: "", source: "" },
+  'House-98': { stance: 'unknown', note: "", source: "" },
+  'House-99': { stance: 'unknown', note: "", source: "" },
+  'House-100': { stance: 'unknown', note: "", source: "" }
+};
+
+const CSTYLE = {
+  passed:    { color: '#1b7a2f', label: 'Resolution passed' },
+  drafting:  { color: '#eda100', label: 'Being drafted' },
+  discussed: { color: '#6da7ec', label: 'Discussed, no action' },
+  none:      { color: '#c4c9d0', label: 'No known action' }
+};
+const PSTYLE = {
+  opposed:  { color: '#1b7a2f', label: 'Opposed' },
+  mixed:    { color: '#eda100', label: 'Mixed' },
+  supports: { color: '#d64545', label: 'Supports line' },
+  unknown:  { color: '#c4c9d0', label: 'Unknown' }
+};
+const LEGIS = [{"key":"Senate-2","name":"Charles H. Clements","chamber":"Senate","district":2,"party":"R","total":0,"counties":["Doddridge"]},{"key":"Senate-2","name":"Chris Rose","chamber":"Senate","district":2,"party":"R","total":1000.0,"counties":["Doddridge"]},{"key":"Senate-4","name":"Amy Grady","chamber":"Senate","district":4,"party":"R","total":1100.0,"counties":["Jackson","Putnam"]},{"key":"Senate-4","name":"Eric Tarr","chamber":"Senate","district":4,"party":"R","total":3500.0,"counties":["Jackson","Putnam"]},{"key":"Senate-7","name":"Rupie Phillips","chamber":"Senate","district":7,"party":"R","total":1000.0,"counties":["Kanawha"]},{"key":"Senate-7","name":"Zack Maynard","chamber":"Senate","district":7,"party":"R","total":1000.0,"counties":["Kanawha"]},{"key":"Senate-8","name":"Glenn Jeffries","chamber":"Senate","district":8,"party":"R","total":2000.0,"counties":["Jackson","Kanawha","Putnam","Roane"]},{"key":"Senate-8","name":"T. Kevan Bartlett","chamber":"Senate","district":8,"party":"R","total":0,"counties":["Jackson","Kanawha","Putnam","Roane"]},{"key":"Senate-11","name":"Bill Hamilton","chamber":"Senate","district":11,"party":"R","total":2500.0,"counties":["Barbour","Braxton","Randolph","Upshur"]},{"key":"Senate-11","name":"Robbie Morris","chamber":"Senate","district":11,"party":"R","total":2000.0,"counties":["Barbour","Braxton","Randolph","Upshur"]},{"key":"Senate-12","name":"Ben Queen","chamber":"Senate","district":12,"party":"R","total":7800.0,"counties":["Calhoun","Gilmer","Harrison","Lewis"]},{"key":"Senate-12","name":"Patrick Martin","chamber":"Senate","district":12,"party":"R","total":500.0,"counties":["Calhoun","Gilmer","Harrison","Lewis"]},{"key":"Senate-14","name":"Jay Taylor","chamber":"Senate","district":14,"party":"R","total":0,"counties":["Grant","Hardy","Preston","Tucker"]},{"key":"Senate-14","name":"Randy E. Smith","chamber":"Senate","district":14,"party":"R","total":4500.0,"counties":["Grant","Hardy","Preston","Tucker"]},{"key":"Senate-15","name":"Darren Thorne","chamber":"Senate","district":15,"party":"R","total":2800.0,"counties":["Berkeley","Hampshire"]},{"key":"Senate-15","name":"Tom Willis","chamber":"Senate","district":15,"party":"R","total":1000.0,"counties":["Berkeley","Hampshire"]},{"key":"Senate-16","name":"Jason Barrett","chamber":"Senate","district":16,"party":"R","total":5500.0,"counties":["Berkeley","Jefferson"]},{"key":"Senate-16","name":"Patricia Rucker","chamber":"Senate","district":16,"party":"R","total":2000.0,"counties":["Berkeley","Jefferson"]},{"key":"Senate-17","name":"Anne B. Charnock","chamber":"Senate","district":17,"party":"R","total":0,"counties":["Kanawha"]},{"key":"Senate-17","name":"Tom Takubo","chamber":"Senate","district":17,"party":"R","total":6600.0,"counties":["Kanawha"]},{"key":"House-8","name":"Bill Bell","chamber":"House","district":8,"party":"R","total":0,"counties":["Doddridge"]},{"key":"House-15","name":"Erica Moore","chamber":"House","district":15,"party":"R","total":500.0,"counties":["Roane"]},{"key":"House-16","name":"Joe Parsons","chamber":"House","district":16,"party":"R","total":2000.0,"counties":["Jackson"]},{"key":"House-17","name":"Jonathan Pinson","chamber":"House","district":17,"party":"R","total":1000.0,"counties":["Jackson"]},{"key":"House-18","name":"Jim Butler","chamber":"House","district":18,"party":"R","total":500.0,"counties":["Putnam"]},{"key":"House-19","name":"Kathie Hess Crouse","chamber":"House","district":19,"party":"R","total":2750.0,"counties":["Putnam"]},{"key":"House-20","name":"Sarah Drennan","chamber":"House","district":20,"party":"R","total":1250.0,"counties":["Putnam"]},{"key":"House-21","name":"Jarred Cannon","chamber":"House","district":21,"party":"R","total":1500.0,"counties":["Putnam"]},{"key":"House-52","name":"Tresa Howell","chamber":"House","district":52,"party":"R","total":500.0,"counties":["Kanawha"]},{"key":"House-53","name":"Tristan Leavitt","chamber":"House","district":53,"party":"R","total":250.0,"counties":["Kanawha"]},{"key":"House-54","name":"Mike Pushkin","chamber":"House","district":54,"party":"D","total":0,"counties":["Kanawha"]},{"key":"House-55","name":"James Robert \"JB\" Akers II","chamber":"House","district":55,"party":"R","total":3500.0,"counties":["Kanawha"]},{"key":"House-56","name":"Kayla Young","chamber":"House","district":56,"party":"D","total":590.0,"counties":["Kanawha"]},{"key":"House-57","name":"Hollis Lewis","chamber":"House","district":57,"party":"D","total":0,"counties":["Kanawha"]},{"key":"House-58","name":"Walter Hall","chamber":"House","district":58,"party":"R","total":1000.0,"counties":["Kanawha"]},{"key":"House-59","name":"Andy Shamblin","chamber":"House","district":59,"party":"R","total":1750.0,"counties":["Kanawha"]},{"key":"House-60","name":"Dana Ferrell","chamber":"House","district":60,"party":"R","total":1000.0,"counties":["Kanawha"]},{"key":"House-61","name":"Dean Jeffries","chamber":"House","district":61,"party":"R","total":1500.0,"counties":["Kanawha"]},{"key":"House-62","name":"Roger Hanshaw","chamber":"House","district":62,"party":"R","total":13200.0,"counties":["Calhoun","Gilmer"]},{"key":"House-63","name":"Lori Dittman","chamber":"House","district":63,"party":"R","total":1500.0,"counties":["Braxton","Gilmer"]},{"key":"House-64","name":"Adam Burkhammer","chamber":"House","district":64,"party":"R","total":500.0,"counties":["Lewis","Upshur"]},{"key":"House-65","name":"Carl Martin","chamber":"House","district":65,"party":"R","total":0,"counties":["Upshur"]},{"key":"House-66","name":"Jonathan Kyle","chamber":"House","district":66,"party":"R","total":0,"counties":["Randolph"]},{"key":"House-67","name":"Elias Coop-Gonzalez","chamber":"House","district":67,"party":"R","total":0,"counties":["Randolph"]},{"key":"House-68","name":"Chris Phillips","chamber":"House","district":68,"party":"R","total":3000.0,"counties":["Barbour","Upshur"]},{"key":"House-69","name":"Keith Marple","chamber":"House","district":69,"party":"R","total":250.0,"counties":["Harrison","Lewis"]},{"key":"House-70","name":"Mickey Petitto","chamber":"House","district":70,"party":"R","total":0,"counties":["Harrison"]},{"key":"House-71","name":"Laura Kimble","chamber":"House","district":71,"party":"R","total":750.0,"counties":["Harrison"]},{"key":"House-72","name":"Clay Riley","chamber":"House","district":72,"party":"R","total":3000.0,"counties":["Harrison"]},{"key":"House-83","name":"George Street","chamber":"House","district":83,"party":"R","total":2000.0,"counties":["Preston"]},{"key":"House-84","name":"D. Rolland Jennings","chamber":"House","district":84,"party":"R","total":500.0,"counties":["Preston"]},{"key":"House-85","name":"John Paul Hott","chamber":"House","district":85,"party":"R","total":1000.0,"counties":["Grant","Tucker"]},{"key":"House-86","name":"Bryan Ward","chamber":"House","district":86,"party":"R","total":500.0,"counties":["Hardy"]},{"key":"House-88","name":"Rick Hillenbrand","chamber":"House","district":88,"party":"R","total":500.0,"counties":["Hampshire"]},{"key":"House-89","name":"David Cannon","chamber":"House","district":89,"party":"R","total":0,"counties":["Hampshire"]},{"key":"House-90","name":"George Miller","chamber":"House","district":90,"party":"R","total":1000.0,"counties":["Berkeley"]},{"key":"House-91","name":"Ian T. Masters","chamber":"House","district":91,"party":"R","total":0,"counties":["Berkeley"]},{"key":"House-92","name":"Michael Hite","chamber":"House","district":92,"party":"R","total":1500.0,"counties":["Berkeley"]},{"key":"House-93","name":"Michael Hornby","chamber":"House","district":93,"party":"R","total":1500.0,"counties":["Berkeley"]},{"key":"House-94","name":"Donald Lee Bennett","chamber":"House","district":94,"party":"R","total":0,"counties":["Berkeley"]},{"key":"House-95","name":"Chuck Horst","chamber":"House","district":95,"party":"R","total":0,"counties":["Berkeley"]},{"key":"House-96","name":"Lisa White","chamber":"House","district":96,"party":"R","total":0,"counties":["Berkeley"]},{"key":"House-97","name":"S. Chris Anders","chamber":"House","district":97,"party":"R","total":300.0,"counties":["Berkeley","Jefferson"]},{"key":"House-98","name":"Joe Funkhouser","chamber":"House","district":98,"party":"R","total":750.0,"counties":["Jefferson"]},{"key":"House-99","name":"Wayne Clark","chamber":"House","district":99,"party":"R","total":1000.0,"counties":["Jefferson"]},{"key":"House-100","name":"Bill Ridenour","chamber":"House","district":100,"party":"R","total":0,"counties":["Jefferson"]}];
+const esc = s => String(s || '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmt$ = n => '$' + Math.round(n).toLocaleString('en-US');
+function badge(st, dark) { return '<span class="badge" style="background:' + st.color + (dark ? ';color:#444' : '') + '">' + st.label + '</span>'; }
+
+// counties
+const corder = { passed: 0, drafting: 1, discussed: 2, none: 3 };
+const cnames = Object.keys(OPPOSITION).sort((a, b) =>
+  (corder[OPPOSITION[a].status] - corder[OPPOSITION[b].status]) || a.localeCompare(b));
+const cc = { passed: 0, drafting: 0, discussed: 0, none: 0 };
+cnames.forEach(n => cc[OPPOSITION[n].status]++);
+document.getElementById('cards').innerHTML =
+  '<div class="card"><div class="n" style="color:#1b7a2f">' + cc.passed + '</div><div class="l">Resolutions passed</div></div>'
+  + '<div class="card"><div class="n" style="color:#b57b00">' + cc.drafting + '</div><div class="l">Being drafted</div></div>'
+  + '<div class="card"><div class="n" style="color:#3b7bc4">' + cc.discussed + '</div><div class="l">Discussed</div></div>'
+  + '<div class="card"><div class="n" style="color:#888">' + cc.none + '</div><div class="l">No known action</div></div>';
+document.getElementById('ctb').innerHTML = cnames.map(n => {
+  const o = OPPOSITION[n]; const st = CSTYLE[o.status] || CSTYLE.none;
+  return '<tr><td><b>' + n + '</b></td>'
+    + '<td>' + badge(st, o.status === 'none') + (o.date ? '<div style="font-size:11px;color:#777">' + esc(o.date) + '</div>' : '') + '</td>'
+    + '<td>' + (esc(o.note) || '<span style="color:#999">—</span>') + '</td>'
+    + '<td>' + (o.source ? '<a href="' + esc(o.source) + '" target="_blank" rel="noopener">link</a>' : '') + '</td></tr>';
+}).join('');
+
+// legislators
+function renderLegis() {
+  const q = document.getElementById('q').value.trim().toUpperCase();
+  const pf = document.getElementById('pf').value;
+  const cf = document.getElementById('cf').value;
+  const sf = document.getElementById('sf').value;
+  let rows = LEGIS.filter(l => {
+    const st = (POSITION[l.key] || {}).stance || 'unknown';
+    if (pf && st !== pf) return false;
+    if (cf && l.counties.indexOf(cf) < 0) return false;
+    if (q && !(l.name + ' ' + l.chamber + ' ' + l.district + ' ' + l.counties.join(' ')).toUpperCase().includes(q)) return false;
+    return true;
+  });
+  if (sf === 'money') rows.sort((a, b) => b.total - a.total);
+  else if (sf === 'name') rows.sort((a, b) => a.name.localeCompare(b.name));
+  else rows.sort((a, b) => (a.chamber !== 'Senate') - (b.chamber !== 'Senate') || a.district - b.district || a.name.localeCompare(b.name));
+  document.getElementById('lcount').textContent = rows.length + ' legislators'
+    + (cf ? ' representing ' + cf + ' County' : '');
+  document.getElementById('ltb').innerHTML = rows.map(l => {
+    const p = POSITION[l.key] || {}; const st = PSTYLE[p.stance || 'unknown'];
+    const pre = l.chamber === 'Senate' ? 'Sen.' : 'Del.';
+    return '<tr><td><b>' + pre + ' ' + esc(l.name) + '</b> (' + l.party + ')'
+      + '<div style="font-size:11px;color:#777">' + l.chamber + ' District ' + l.district + '</div></td>'
+      + '<td class="hidemob cnts">' + l.counties.join(', ') + '</td>'
+      + '<td class="num">' + (l.total > 0 ? fmt$(l.total) : '—') + '</td>'
+      + '<td>' + badge(st, (p.stance || 'unknown') === 'unknown')
+      + (p.note ? '<div style="font-size:11px;color:#555;margin-top:3px">' + esc(p.note)
+          + (p.source ? ' <a href="' + esc(p.source) + '" target="_blank" rel="noopener">↗</a>' : '') + '</div>' : '')
+      + '</td></tr>';
+  }).join('');
+}
+['q', 'pf', 'cf', 'sf'].forEach(id => {
+  document.getElementById(id).addEventListener('input', renderLegis);
+  document.getElementById(id).addEventListener('change', renderLegis);
+});
+renderLegis();
+</script>
+</body>
+</html>
