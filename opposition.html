@@ -84,13 +84,14 @@
    TO UPDATE: edit the two blocks below, then save / commit. Nothing else.
 
    COUNTIES — one entry per county:
-      status: 'passed' (resolution adopted) | 'drafting' (being written / on agenda)
+     status: 'passed' (resolution adopted) | 'drafting' (being written / on agenda)
            | 'discussed' (publicly discussed, no vote) | 'none' (no known action)
-      date, note (one sentence), source (link or '')
+     date, note (one sentence), source (link or '')
 
-   LEGISLATORS — key is "House-<district>" or "Senate-<district>-<initials>":
-      stance: 'opposed' | 'supports' | 'mixed' | 'unknown'
-      note (one sentence), source (link or '')
+   LEGISLATORS — key is the legislator's NAME exactly as shown in the table
+   (one entry per person — the two senators who share a district are separate):
+     stance: 'opposed' | 'supports' | 'mixed' | 'unknown'
+     note (one sentence), source (link or '')
    ========================================================================== */
 const OPPOSITION = {
   Barbour: { status: 'passed', date: '2026', note: "County Commission passed the \"Resolution for Kelley Road and Hunter\u2019s Fork Landowners Regarding Opposition to Valley Link Transmission Project.\"", source: "https://barbourcountywv.gov/valley-north-project-a-765-kv-valley-link-transmission-project/" },
@@ -106,7 +107,7 @@ const OPPOSITION = {
   Jackson: { status: 'none', date: '', note: "", source: "" },
   Jefferson: { status: 'discussed', date: 'July 2026', note: "Commissioners attended the open house; Commissioner Mike Mood publicly noted counties have no siting power \u2014 no formal action yet.", source: "https://wvmetronews.com/2026/07/01/eastern-panhandle-residents-get-a-look-at-massive-transmission-line-project-during-open-house/" },
   Kanawha: { status: 'none', date: '', note: "", source: "" },
-  Lewis: { status: 'drafting', date: 'July 2026', note: "Weston Historic Landmark Commission is drafting a resolution", source: "" },
+  Lewis: { status: 'none', date: '', note: "", source: "" },
   Preston: { status: 'none', date: '', note: "", source: "" },
   Putnam: { status: 'none', date: '', note: "", source: "" },
   Randolph: { status: 'none', date: '', note: "", source: "" },
@@ -115,72 +116,72 @@ const OPPOSITION = {
   Upshur: { status: 'drafting', date: 'July 2026', note: "County Commission directed staff to draft a resolution opposing the 765,000-volt Valley Link line.", source: "https://www.mybuckhannon.com/upshur-county-commission-to-draft-resolution-opposing-765000-volt-valley-link-power-line/" }
 };
 const POSITION = {
-  'Senate-2-CC': { stance: 'unknown', note: "", source: "" },
-  'Senate-2-CR': { stance: 'unknown', note: "", source: "" },
-  'Senate-4-AG': { stance: 'unknown', note: "", source: "" },
-  'Senate-4-ET': { stance: 'unknown', note: "", source: "" },
-  'Senate-7-RP': { stance: 'unknown', note: "", source: "" },
-  'Senate-7-ZM': { stance: 'unknown', note: "", source: "" },
-  'Senate-8-GJ': { stance: 'unknown', note: "", source: "" },
-  'Senate-8-KB': { stance: 'unknown', note: "", source: "" },
-  'Senate-11-BH': { stance: 'unknown', note: "", source: "" },
-  'Senate-11-RM': { stance: 'opposed', note: "", source: "https://www.mybuckhannon.com/state-sen-robbie-morris-opposes-valley-north-transmission-line/" },
-  'Senate-12-BQ': { stance: 'unknown', note: "", source: "" },
-  'Senate-12-PM': { stance: 'unknown', note: "", source: "" },
-  'Senate-14-JT': { stance: 'unknown', note: "", source: "" },
-  'Senate-14-RS': { stance: 'unknown', note: "", source: "" },
-  'Senate-15-DT': { stance: 'unknown', note: "", source: "" },
-  'Senate-15-TW': { stance: 'unknown', note: "", source: "" },
-  'Senate-16-JB': { stance: 'unknown', note: "", source: "" },
-  'Senate-16-PR': { stance: 'unknown', note: "", source: "" },
-  'Senate-17-AC': { stance: 'unknown', note: "", source: "" },
-  'Senate-17-TT': { stance: 'unknown', note: "", source: "" },
-  'House-8': { stance: 'unknown', note: "", source: "" },
-  'House-15': { stance: 'unknown', note: "", source: "" },
-  'House-16': { stance: 'unknown', note: "", source: "" },
-  'House-17': { stance: 'unknown', note: "", source: "" },
-  'House-18': { stance: 'unknown', note: "", source: "" },
-  'House-19': { stance: 'unknown', note: "", source: "" },
-  'House-20': { stance: 'unknown', note: "", source: "" },
-  'House-21': { stance: 'unknown', note: "", source: "" },
-  'House-52': { stance: 'unknown', note: "", source: "" },
-  'House-53': { stance: 'unknown', note: "", source: "" },
-  'House-54': { stance: 'unknown', note: "", source: "" },
-  'House-55': { stance: 'unknown', note: "", source: "" },
-  'House-56': { stance: 'unknown', note: "", source: "" },
-  'House-57': { stance: 'unknown', note: "", source: "" },
-  'House-58': { stance: 'unknown', note: "", source: "" },
-  'House-59': { stance: 'unknown', note: "", source: "" },
-  'House-60': { stance: 'unknown', note: "", source: "" },
-  'House-61': { stance: 'unknown', note: "", source: "" },
-  'House-62': { stance: 'unknown', note: "", source: "" },
-  'House-63': { stance: 'unknown', note: "", source: "" },
-  'House-64': { stance: 'unknown', note: "", source: "" },
-  'House-65': { stance: 'unknown', note: "", source: "" },
-  'House-66': { stance: 'unknown', note: "", source: "" },
-  'House-67': { stance: 'unknown', note: "", source: "" },
-  'House-68': { stance: 'unknown', note: "", source: "" },
-  'House-69': { stance: 'unknown', note: "", source: "" },
-  'House-70': { stance: 'unknown', note: "", source: "" },
-  'House-71': { stance: 'unknown', note: "", source: "" },
-  'House-72': { stance: 'unknown', note: "", source: "" },
-  'House-83': { stance: 'unknown', note: "", source: "" },
-  'House-84': { stance: 'unknown', note: "", source: "" },
-  'House-85': { stance: 'unknown', note: "", source: "" },
-  'House-86': { stance: 'unknown', note: "", source: "" },
-  'House-88': { stance: 'unknown', note: "", source: "" },
-  'House-89': { stance: 'unknown', note: "", source: "" },
-  'House-90': { stance: 'unknown', note: "", source: "" },
-  'House-91': { stance: 'unknown', note: "", source: "" },
-  'House-92': { stance: 'unknown', note: "", source: "" },
-  'House-93': { stance: 'unknown', note: "", source: "" },
-  'House-94': { stance: 'unknown', note: "", source: "" },
-  'House-95': { stance: 'unknown', note: "", source: "" },
-  'House-96': { stance: 'unknown', note: "", source: "" },
-  'House-97': { stance: 'unknown', note: "", source: "" },
-  'House-98': { stance: 'unknown', note: "", source: "" },
-  'House-99': { stance: 'unknown', note: "", source: "" },
-  'House-100': { stance: 'unknown', note: "", source: "" }
+  'Charles H. Clements': { stance: 'unknown', note: "", source: "" },
+  'Chris Rose': { stance: 'unknown', note: "", source: "" },
+  'Amy Grady': { stance: 'unknown', note: "", source: "" },
+  'Eric Tarr': { stance: 'unknown', note: "", source: "" },
+  'Rupie Phillips': { stance: 'unknown', note: "", source: "" },
+  'Zack Maynard': { stance: 'unknown', note: "", source: "" },
+  'Glenn Jeffries': { stance: 'unknown', note: "", source: "" },
+  'T. Kevan Bartlett': { stance: 'unknown', note: "", source: "" },
+  'Bill Hamilton': { stance: 'unknown', note: "", source: "" },
+  'Robbie Morris': { stance: 'opposed', note: "Spoke against the line at the Barbour and Tucker county meetings: \"their problem should not become our problem.\"", source: "https://www.theintermountain.com/news/local-news/2026/07/morris-opposes-transmission-line-plan/" },
+  'Ben Queen': { stance: 'unknown', note: "", source: "" },
+  'Patrick Martin': { stance: 'unknown', note: "", source: "" },
+  'Jay Taylor': { stance: 'unknown', note: "", source: "" },
+  'Randy E. Smith': { stance: 'unknown', note: "", source: "" },
+  'Darren Thorne': { stance: 'unknown', note: "", source: "" },
+  'Tom Willis': { stance: 'unknown', note: "", source: "" },
+  'Jason Barrett': { stance: 'unknown', note: "", source: "" },
+  'Patricia Rucker': { stance: 'unknown', note: "", source: "" },
+  'Anne B. Charnock': { stance: 'unknown', note: "", source: "" },
+  'Tom Takubo': { stance: 'unknown', note: "", source: "" },
+  'Bill Bell': { stance: 'unknown', note: "", source: "" },
+  'Erica Moore': { stance: 'unknown', note: "", source: "" },
+  'Joe Parsons': { stance: 'unknown', note: "", source: "" },
+  'Jonathan Pinson': { stance: 'unknown', note: "", source: "" },
+  'Jim Butler': { stance: 'unknown', note: "", source: "" },
+  'Kathie Hess Crouse': { stance: 'unknown', note: "", source: "" },
+  'Sarah Drennan': { stance: 'unknown', note: "", source: "" },
+  'Jarred Cannon': { stance: 'unknown', note: "", source: "" },
+  'Tresa Howell': { stance: 'unknown', note: "", source: "" },
+  'Tristan Leavitt': { stance: 'unknown', note: "", source: "" },
+  'Mike Pushkin': { stance: 'unknown', note: "", source: "" },
+  'James Robert "JB" Akers II': { stance: 'unknown', note: "", source: "" },
+  'Kayla Young': { stance: 'unknown', note: "", source: "" },
+  'Hollis Lewis': { stance: 'unknown', note: "", source: "" },
+  'Walter Hall': { stance: 'unknown', note: "", source: "" },
+  'Andy Shamblin': { stance: 'unknown', note: "", source: "" },
+  'Dana Ferrell': { stance: 'unknown', note: "", source: "" },
+  'Dean Jeffries': { stance: 'unknown', note: "", source: "" },
+  'Roger Hanshaw': { stance: 'unknown', note: "", source: "" },
+  'Lori Dittman': { stance: 'unknown', note: "", source: "" },
+  'Adam Burkhammer': { stance: 'unknown', note: "", source: "" },
+  'Carl Martin': { stance: 'unknown', note: "", source: "" },
+  'Jonathan Kyle': { stance: 'unknown', note: "", source: "" },
+  'Elias Coop-Gonzalez': { stance: 'unknown', note: "", source: "" },
+  'Chris Phillips': { stance: 'unknown', note: "", source: "" },
+  'Keith Marple': { stance: 'unknown', note: "", source: "" },
+  'Mickey Petitto': { stance: 'unknown', note: "", source: "" },
+  'Laura Kimble': { stance: 'unknown', note: "", source: "" },
+  'Clay Riley': { stance: 'unknown', note: "", source: "" },
+  'George Street': { stance: 'unknown', note: "", source: "" },
+  'D. Rolland Jennings': { stance: 'unknown', note: "", source: "" },
+  'John Paul Hott': { stance: 'unknown', note: "", source: "" },
+  'Bryan Ward': { stance: 'unknown', note: "", source: "" },
+  'Rick Hillenbrand': { stance: 'unknown', note: "", source: "" },
+  'David Cannon': { stance: 'unknown', note: "", source: "" },
+  'George Miller': { stance: 'unknown', note: "", source: "" },
+  'Ian T. Masters': { stance: 'unknown', note: "", source: "" },
+  'Michael Hite': { stance: 'unknown', note: "", source: "" },
+  'Michael Hornby': { stance: 'unknown', note: "", source: "" },
+  'Donald Lee Bennett': { stance: 'unknown', note: "", source: "" },
+  'Chuck Horst': { stance: 'unknown', note: "", source: "" },
+  'Lisa White': { stance: 'unknown', note: "", source: "" },
+  'S. Chris Anders': { stance: 'unknown', note: "", source: "" },
+  'Joe Funkhouser': { stance: 'unknown', note: "", source: "" },
+  'Wayne Clark': { stance: 'unknown', note: "", source: "" },
+  'Bill Ridenour': { stance: 'unknown', note: "", source: "" }
 };
 
 const CSTYLE = {
@@ -195,7 +196,7 @@ const PSTYLE = {
   supports: { color: '#d64545', label: 'Supports line' },
   unknown:  { color: '#c4c9d0', label: 'Unknown' }
 };
-const LEGIS = [{"key":"Senate-2-CC","name":"Charles H. Clements","chamber":"Senate","district":2,"party":"R","total":0,"counties":["Doddridge"]},{"key":"Senate-2-CR","name":"Chris Rose","chamber":"Senate","district":2,"party":"R","total":1000.0,"counties":["Doddridge"]},{"key":"Senate-4-AG","name":"Amy Grady","chamber":"Senate","district":4,"party":"R","total":1100.0,"counties":["Jackson","Putnam"]},{"key":"Senate-4-ET","name":"Eric Tarr","chamber":"Senate","district":4,"party":"R","total":3500.0,"counties":["Jackson","Putnam"]},{"key":"Senate-7-RP","name":"Rupie Phillips","chamber":"Senate","district":7,"party":"R","total":1000.0,"counties":["Kanawha"]},{"key":"Senate-7-ZM","name":"Zack Maynard","chamber":"Senate","district":7,"party":"R","total":1000.0,"counties":["Kanawha"]},{"key":"Senate-8-GJ","name":"Glenn Jeffries","chamber":"Senate","district":8,"party":"R","total":2000.0,"counties":["Jackson","Kanawha","Putnam","Roane"]},{"key":"Senate-8-KB","name":"T. Kevan Bartlett","chamber":"Senate","district":8,"party":"R","total":0,"counties":["Jackson","Kanawha","Putnam","Roane"]},{"key":"Senate-11-BH","name":"Bill Hamilton","chamber":"Senate","district":11,"party":"R","total":2500.0,"counties":["Barbour","Braxton","Randolph","Upshur"]},{"key":"Senate-11-RM","name":"Robbie Morris","chamber":"Senate","district":11,"party":"R","total":2000.0,"counties":["Barbour","Braxton","Randolph","Upshur"]},{"key":"Senate-12-BQ","name":"Ben Queen","chamber":"Senate","district":12,"party":"R","total":7800.0,"counties":["Calhoun","Gilmer","Harrison","Lewis"]},{"key":"Senate-12-PM","name":"Patrick Martin","chamber":"Senate","district":12,"party":"R","total":500.0,"counties":["Calhoun","Gilmer","Harrison","Lewis"]},{"key":"Senate-14-JT","name":"Jay Taylor","chamber":"Senate","district":14,"party":"R","total":0,"counties":["Grant","Hardy","Preston","Tucker"]},{"key":"Senate-14-RS","name":"Randy E. Smith","chamber":"Senate","district":14,"party":"R","total":4500.0,"counties":["Grant","Hardy","Preston","Tucker"]},{"key":"Senate-15-DT","name":"Darren Thorne","chamber":"Senate","district":15,"party":"R","total":2800.0,"counties":["Berkeley","Hampshire"]},{"key":"Senate-15-TW","name":"Tom Willis","chamber":"Senate","district":15,"party":"R","total":1000.0,"counties":["Berkeley","Hampshire"]},{"key":"Senate-16-JB","name":"Jason Barrett","chamber":"Senate","district":16,"party":"R","total":5500.0,"counties":["Berkeley","Jefferson"]},{"key":"Senate-16-PR","name":"Patricia Rucker","chamber":"Senate","district":16,"party":"R","total":2000.0,"counties":["Berkeley","Jefferson"]},{"key":"Senate-17-AC","name":"Anne B. Charnock","chamber":"Senate","district":17,"party":"R","total":0,"counties":["Kanawha"]},{"key":"Senate-17-TT","name":"Tom Takubo","chamber":"Senate","district":17,"party":"R","total":6600.0,"counties":["Kanawha"]},{"key":"House-8","name":"Bill Bell","chamber":"House","district":8,"party":"R","total":0,"counties":["Doddridge"]},{"key":"House-15","name":"Erica Moore","chamber":"House","district":15,"party":"R","total":500.0,"counties":["Roane"]},{"key":"House-16","name":"Joe Parsons","chamber":"House","district":16,"party":"R","total":2000.0,"counties":["Jackson"]},{"key":"House-17","name":"Jonathan Pinson","chamber":"House","district":17,"party":"R","total":1000.0,"counties":["Jackson"]},{"key":"House-18","name":"Jim Butler","chamber":"House","district":18,"party":"R","total":500.0,"counties":["Putnam"]},{"key":"House-19","name":"Kathie Hess Crouse","chamber":"House","district":19,"party":"R","total":2750.0,"counties":["Putnam"]},{"key":"House-20","name":"Sarah Drennan","chamber":"House","district":20,"party":"R","total":1250.0,"counties":["Putnam"]},{"key":"House-21","name":"Jarred Cannon","chamber":"House","district":21,"party":"R","total":1500.0,"counties":["Putnam"]},{"key":"House-52","name":"Tresa Howell","chamber":"House","district":52,"party":"R","total":500.0,"counties":["Kanawha"]},{"key":"House-53","name":"Tristan Leavitt","chamber":"House","district":53,"party":"R","total":250.0,"counties":["Kanawha"]},{"key":"House-54","name":"Mike Pushkin","chamber":"House","district":54,"party":"D","total":0,"counties":["Kanawha"]},{"key":"House-55","name":"James Robert \"JB\" Akers II","chamber":"House","district":55,"party":"R","total":3500.0,"counties":["Kanawha"]},{"key":"House-56","name":"Kayla Young","chamber":"House","district":56,"party":"D","total":590.0,"counties":["Kanawha"]},{"key":"House-57","name":"Hollis Lewis","chamber":"House","district":57,"party":"D","total":0,"counties":["Kanawha"]},{"key":"House-58","name":"Walter Hall","chamber":"House","district":58,"party":"R","total":1000.0,"counties":["Kanawha"]},{"key":"House-59","name":"Andy Shamblin","chamber":"House","district":59,"party":"R","total":1750.0,"counties":["Kanawha"]},{"key":"House-60","name":"Dana Ferrell","chamber":"House","district":60,"party":"R","total":1000.0,"counties":["Kanawha"]},{"key":"House-61","name":"Dean Jeffries","chamber":"House","district":61,"party":"R","total":1500.0,"counties":["Kanawha"]},{"key":"House-62","name":"Roger Hanshaw","chamber":"House","district":62,"party":"R","total":13200.0,"counties":["Calhoun","Gilmer"]},{"key":"House-63","name":"Lori Dittman","chamber":"House","district":63,"party":"R","total":1500.0,"counties":["Braxton","Gilmer"]},{"key":"House-64","name":"Adam Burkhammer","chamber":"House","district":64,"party":"R","total":500.0,"counties":["Lewis","Upshur"]},{"key":"House-65","name":"Carl Martin","chamber":"House","district":65,"party":"R","total":0,"counties":["Upshur"]},{"key":"House-66","name":"Jonathan Kyle","chamber":"House","district":66,"party":"R","total":0,"counties":["Randolph"]},{"key":"House-67","name":"Elias Coop-Gonzalez","chamber":"House","district":67,"party":"R","total":0,"counties":["Randolph"]},{"key":"House-68","name":"Chris Phillips","chamber":"House","district":68,"party":"R","total":3000.0,"counties":["Barbour","Upshur"]},{"key":"House-69","name":"Keith Marple","chamber":"House","district":69,"party":"R","total":250.0,"counties":["Harrison","Lewis"]},{"key":"House-70","name":"Mickey Petitto","chamber":"House","district":70,"party":"R","total":0,"counties":["Harrison"]},{"key":"House-71","name":"Laura Kimble","chamber":"House","district":71,"party":"R","total":750.0,"counties":["Harrison"]},{"key":"House-72","name":"Clay Riley","chamber":"House","district":72,"party":"R","total":3000.0,"counties":["Harrison"]},{"key":"House-83","name":"George Street","chamber":"House","district":83,"party":"R","total":2000.0,"counties":["Preston"]},{"key":"House-84","name":"D. Rolland Jennings","chamber":"House","district":84,"party":"R","total":500.0,"counties":["Preston"]},{"key":"House-85","name":"John Paul Hott","chamber":"House","district":85,"party":"R","total":1000.0,"counties":["Grant","Tucker"]},{"key":"House-86","name":"Bryan Ward","chamber":"House","district":86,"party":"R","total":500.0,"counties":["Hardy"]},{"name":"Rick Hillenbrand","chamber":"House","district":88,"party":"R","total":500.0,"counties":["Hampshire"]},{"key":"House-89","name":"David Cannon","chamber":"House","district":89,"party":"R","total":0,"counties":["Hampshire"]},{"key":"House-90","name":"George Miller","chamber":"House","district":90,"party":"R","total":1000.0,"counties":["Berkeley"]},{"key":"House-91","name":"Ian T. Masters","chamber":"House","district":91,"party":"R","total":0,"counties":["Berkeley"]},{"key":"House-92","name":"Michael Hite","chamber":"House","district":92,"party":"R","total":1500.0,"counties":["Berkeley"]},{"key":"House-93","name":"Michael Hornby","chamber":"House","district":93,"party":"R","total":1500.0,"counties":["Berkeley"]},{"key":"House-94","name":"Donald Lee Bennett","chamber":"House","district":94,"party":"R","total":0,"counties":["Berkeley"]},{"key":"House-95","name":"Chuck Horst","chamber":"House","district":95,"party":"R","total":0,"counties":["Berkeley"]},{"key":"House-96","name":"Lisa White","chamber":"House","district":96,"party":"R","total":0,"counties":["Berkeley"]},{"key":"House-97","name":"S. Chris Anders","chamber":"House","district":97,"party":"R","total":300.0,"counties":["Berkeley","Jefferson"]},{"key":"House-98","name":"Joe Funkhouser","chamber":"House","district":98,"party":"R","total":750.0,"counties":["Jefferson"]},{"key":"House-99","name":"Wayne Clark","chamber":"House","district":99,"party":"R","total":1000.0,"counties":["Jefferson"]},{"key":"House-100","name":"Bill Ridenour","chamber":"House","district":100,"party":"R","total":0,"counties":["Jefferson"]}];
+const LEGIS = [{"key":"Charles H. Clements","name":"Charles H. Clements","chamber":"Senate","district":2,"party":"R","total":0,"counties":["Doddridge"]},{"key":"Chris Rose","name":"Chris Rose","chamber":"Senate","district":2,"party":"R","total":1000.0,"counties":["Doddridge"]},{"key":"Amy Grady","name":"Amy Grady","chamber":"Senate","district":4,"party":"R","total":1100.0,"counties":["Jackson","Putnam"]},{"key":"Eric Tarr","name":"Eric Tarr","chamber":"Senate","district":4,"party":"R","total":3500.0,"counties":["Jackson","Putnam"]},{"key":"Rupie Phillips","name":"Rupie Phillips","chamber":"Senate","district":7,"party":"R","total":1000.0,"counties":["Kanawha"]},{"key":"Zack Maynard","name":"Zack Maynard","chamber":"Senate","district":7,"party":"R","total":1000.0,"counties":["Kanawha"]},{"key":"Glenn Jeffries","name":"Glenn Jeffries","chamber":"Senate","district":8,"party":"R","total":2000.0,"counties":["Jackson","Kanawha","Putnam","Roane"]},{"key":"T. Kevan Bartlett","name":"T. Kevan Bartlett","chamber":"Senate","district":8,"party":"R","total":0,"counties":["Jackson","Kanawha","Putnam","Roane"]},{"key":"Bill Hamilton","name":"Bill Hamilton","chamber":"Senate","district":11,"party":"R","total":2500.0,"counties":["Barbour","Braxton","Randolph","Upshur"]},{"key":"Robbie Morris","name":"Robbie Morris","chamber":"Senate","district":11,"party":"R","total":2000.0,"counties":["Barbour","Braxton","Randolph","Upshur"]},{"key":"Ben Queen","name":"Ben Queen","chamber":"Senate","district":12,"party":"R","total":7800.0,"counties":["Calhoun","Gilmer","Harrison","Lewis"]},{"key":"Patrick Martin","name":"Patrick Martin","chamber":"Senate","district":12,"party":"R","total":500.0,"counties":["Calhoun","Gilmer","Harrison","Lewis"]},{"key":"Jay Taylor","name":"Jay Taylor","chamber":"Senate","district":14,"party":"R","total":0,"counties":["Grant","Hardy","Preston","Tucker"]},{"key":"Randy E. Smith","name":"Randy E. Smith","chamber":"Senate","district":14,"party":"R","total":4500.0,"counties":["Grant","Hardy","Preston","Tucker"]},{"key":"Darren Thorne","name":"Darren Thorne","chamber":"Senate","district":15,"party":"R","total":2800.0,"counties":["Berkeley","Hampshire"]},{"key":"Tom Willis","name":"Tom Willis","chamber":"Senate","district":15,"party":"R","total":1000.0,"counties":["Berkeley","Hampshire"]},{"key":"Jason Barrett","name":"Jason Barrett","chamber":"Senate","district":16,"party":"R","total":5500.0,"counties":["Berkeley","Jefferson"]},{"key":"Patricia Rucker","name":"Patricia Rucker","chamber":"Senate","district":16,"party":"R","total":2000.0,"counties":["Berkeley","Jefferson"]},{"key":"Anne B. Charnock","name":"Anne B. Charnock","chamber":"Senate","district":17,"party":"R","total":0,"counties":["Kanawha"]},{"key":"Tom Takubo","name":"Tom Takubo","chamber":"Senate","district":17,"party":"R","total":6600.0,"counties":["Kanawha"]},{"key":"Bill Bell","name":"Bill Bell","chamber":"House","district":8,"party":"R","total":0,"counties":["Doddridge"]},{"key":"Erica Moore","name":"Erica Moore","chamber":"House","district":15,"party":"R","total":500.0,"counties":["Roane"]},{"key":"Joe Parsons","name":"Joe Parsons","chamber":"House","district":16,"party":"R","total":2000.0,"counties":["Jackson"]},{"key":"Jonathan Pinson","name":"Jonathan Pinson","chamber":"House","district":17,"party":"R","total":1000.0,"counties":["Jackson"]},{"key":"Jim Butler","name":"Jim Butler","chamber":"House","district":18,"party":"R","total":500.0,"counties":["Putnam"]},{"key":"Kathie Hess Crouse","name":"Kathie Hess Crouse","chamber":"House","district":19,"party":"R","total":2750.0,"counties":["Putnam"]},{"key":"Sarah Drennan","name":"Sarah Drennan","chamber":"House","district":20,"party":"R","total":1250.0,"counties":["Putnam"]},{"key":"Jarred Cannon","name":"Jarred Cannon","chamber":"House","district":21,"party":"R","total":1500.0,"counties":["Putnam"]},{"key":"Tresa Howell","name":"Tresa Howell","chamber":"House","district":52,"party":"R","total":500.0,"counties":["Kanawha"]},{"key":"Tristan Leavitt","name":"Tristan Leavitt","chamber":"House","district":53,"party":"R","total":250.0,"counties":["Kanawha"]},{"key":"Mike Pushkin","name":"Mike Pushkin","chamber":"House","district":54,"party":"D","total":0,"counties":["Kanawha"]},{"key":"James Robert \"JB\" Akers II","name":"James Robert \"JB\" Akers II","chamber":"House","district":55,"party":"R","total":3500.0,"counties":["Kanawha"]},{"key":"Kayla Young","name":"Kayla Young","chamber":"House","district":56,"party":"D","total":590.0,"counties":["Kanawha"]},{"key":"Hollis Lewis","name":"Hollis Lewis","chamber":"House","district":57,"party":"D","total":0,"counties":["Kanawha"]},{"key":"Walter Hall","name":"Walter Hall","chamber":"House","district":58,"party":"R","total":1000.0,"counties":["Kanawha"]},{"key":"Andy Shamblin","name":"Andy Shamblin","chamber":"House","district":59,"party":"R","total":1750.0,"counties":["Kanawha"]},{"key":"Dana Ferrell","name":"Dana Ferrell","chamber":"House","district":60,"party":"R","total":1000.0,"counties":["Kanawha"]},{"key":"Dean Jeffries","name":"Dean Jeffries","chamber":"House","district":61,"party":"R","total":1500.0,"counties":["Kanawha"]},{"key":"Roger Hanshaw","name":"Roger Hanshaw","chamber":"House","district":62,"party":"R","total":13200.0,"counties":["Calhoun","Gilmer"]},{"key":"Lori Dittman","name":"Lori Dittman","chamber":"House","district":63,"party":"R","total":1500.0,"counties":["Braxton","Gilmer"]},{"key":"Adam Burkhammer","name":"Adam Burkhammer","chamber":"House","district":64,"party":"R","total":500.0,"counties":["Lewis","Upshur"]},{"key":"Carl Martin","name":"Carl Martin","chamber":"House","district":65,"party":"R","total":0,"counties":["Upshur"]},{"key":"Jonathan Kyle","name":"Jonathan Kyle","chamber":"House","district":66,"party":"R","total":0,"counties":["Randolph"]},{"key":"Elias Coop-Gonzalez","name":"Elias Coop-Gonzalez","chamber":"House","district":67,"party":"R","total":0,"counties":["Randolph"]},{"key":"Chris Phillips","name":"Chris Phillips","chamber":"House","district":68,"party":"R","total":3000.0,"counties":["Barbour","Upshur"]},{"key":"Keith Marple","name":"Keith Marple","chamber":"House","district":69,"party":"R","total":250.0,"counties":["Harrison","Lewis"]},{"key":"Mickey Petitto","name":"Mickey Petitto","chamber":"House","district":70,"party":"R","total":0,"counties":["Harrison"]},{"key":"Laura Kimble","name":"Laura Kimble","chamber":"House","district":71,"party":"R","total":750.0,"counties":["Harrison"]},{"key":"Clay Riley","name":"Clay Riley","chamber":"House","district":72,"party":"R","total":3000.0,"counties":["Harrison"]},{"key":"George Street","name":"George Street","chamber":"House","district":83,"party":"R","total":2000.0,"counties":["Preston"]},{"key":"D. Rolland Jennings","name":"D. Rolland Jennings","chamber":"House","district":84,"party":"R","total":500.0,"counties":["Preston"]},{"key":"John Paul Hott","name":"John Paul Hott","chamber":"House","district":85,"party":"R","total":1000.0,"counties":["Grant","Tucker"]},{"key":"Bryan Ward","name":"Bryan Ward","chamber":"House","district":86,"party":"R","total":500.0,"counties":["Hardy"]},{"key":"Rick Hillenbrand","name":"Rick Hillenbrand","chamber":"House","district":88,"party":"R","total":500.0,"counties":["Hampshire"]},{"key":"David Cannon","name":"David Cannon","chamber":"House","district":89,"party":"R","total":0,"counties":["Hampshire"]},{"key":"George Miller","name":"George Miller","chamber":"House","district":90,"party":"R","total":1000.0,"counties":["Berkeley"]},{"key":"Ian T. Masters","name":"Ian T. Masters","chamber":"House","district":91,"party":"R","total":0,"counties":["Berkeley"]},{"key":"Michael Hite","name":"Michael Hite","chamber":"House","district":92,"party":"R","total":1500.0,"counties":["Berkeley"]},{"key":"Michael Hornby","name":"Michael Hornby","chamber":"House","district":93,"party":"R","total":1500.0,"counties":["Berkeley"]},{"key":"Donald Lee Bennett","name":"Donald Lee Bennett","chamber":"House","district":94,"party":"R","total":0,"counties":["Berkeley"]},{"key":"Chuck Horst","name":"Chuck Horst","chamber":"House","district":95,"party":"R","total":0,"counties":["Berkeley"]},{"key":"Lisa White","name":"Lisa White","chamber":"House","district":96,"party":"R","total":0,"counties":["Berkeley"]},{"key":"S. Chris Anders","name":"S. Chris Anders","chamber":"House","district":97,"party":"R","total":300.0,"counties":["Berkeley","Jefferson"]},{"key":"Joe Funkhouser","name":"Joe Funkhouser","chamber":"House","district":98,"party":"R","total":750.0,"counties":["Jefferson"]},{"key":"Wayne Clark","name":"Wayne Clark","chamber":"House","district":99,"party":"R","total":1000.0,"counties":["Jefferson"]},{"key":"Bill Ridenour","name":"Bill Ridenour","chamber":"House","district":100,"party":"R","total":0,"counties":["Jefferson"]}];
 const esc = s => String(s || '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const fmt$ = n => '$' + Math.round(n).toLocaleString('en-US');
 function badge(st, dark) { return '<span class="badge" style="background:' + st.color + (dark ? ';color:#444' : '') + '">' + st.label + '</span>'; }
