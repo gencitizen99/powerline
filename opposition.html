@@ -43,6 +43,8 @@
 
   <div class="warn"><b>What this tracks:</b> (1) formal action by county governments on the proposed Valley North 765&nbsp;kV line, and (2) every West Virginia state legislator who represents an impacted county, with their position as it becomes known. County resolutions and legislator statements aren&rsquo;t binding on the PSC, but they shape the public record and the politics. Maintained by a community member — <a href="mailto:pizzapizza1987@proton.me">send corrections or updates</a> with a link to the article, minutes, or statement.</div>
 
+  <div class="count" id="srcnote" style="margin:-6px 2px 10px">Loading live data from the tracking sheet…</div>
+
   <h2>Counties</h2>
   <div class="h2sub">Where each impacted county government stands.</div>
   <div class="stats" id="cards"></div>
@@ -81,17 +83,14 @@
 </div>
 <script>
 /* ==========================================================================
-   TO UPDATE: edit the two blocks below, then save / commit. Nothing else.
-
-   COUNTIES — one entry per county:
-     status: 'passed' (resolution adopted) | 'drafting' (being written / on agenda)
-           | 'discussed' (publicly discussed, no vote) | 'none' (no known action)
-     date, note (one sentence), source (link or '')
-
-   LEGISLATORS — key is the legislator's NAME exactly as shown in the table
-   (one entry per person — the two senators who share a district are separate):
-     stance: 'opposed' | 'supports' | 'mixed' | 'unknown'
-     note (one sentence), source (link or '')
+   THIS PAGE READS ITS STATUSES FROM A GOOGLE SHEET — update the sheet, not
+   this file. Sheet: docs.google.com/spreadsheets/d/1B7qsupKNWZwGm1f9QGHeAA8nIMHxaNDymLKcOb1cOGo
+     First tab (counties):     County | Status | Date | Note | Source
+        Status: passed | drafting | discussed | none
+     Tab "legislators":        Name | Stance | Note | Source
+        Name exactly as shown in the table; Stance: opposed | supports | mixed | unknown
+   The sheet must be shared "Anyone with the link – Viewer".
+   The blocks below are the FALLBACK shown if the sheet can't be reached.
    ========================================================================== */
 const OPPOSITION = {
   Barbour: { status: 'passed', date: '2026', note: "County Commission passed the \"Resolution for Kelley Road and Hunter\u2019s Fork Landowners Regarding Opposition to Valley Link Transmission Project.\"", source: "https://barbourcountywv.gov/valley-north-project-a-765-kv-valley-link-transmission-project/" },
@@ -203,6 +202,7 @@ function badge(st, dark) { return '<span class="badge" style="background:' + st.
 
 // counties
 const corder = { passed: 0, drafting: 1, discussed: 2, none: 3 };
+function renderCounties() {
 const cnames = Object.keys(OPPOSITION).sort((a, b) =>
   (corder[OPPOSITION[a].status] - corder[OPPOSITION[b].status]) || a.localeCompare(b));
 const cc = { passed: 0, drafting: 0, discussed: 0, none: 0 };
@@ -219,6 +219,8 @@ document.getElementById('ctb').innerHTML = cnames.map(n => {
     + '<td>' + (esc(o.note) || '<span style="color:#999">—</span>') + '</td>'
     + '<td>' + (o.source ? '<a href="' + esc(o.source) + '" target="_blank" rel="noopener">link</a>' : '') + '</td></tr>';
 }).join('');
+}
+renderCounties();
 
 // legislators
 function renderLegis() {
@@ -256,6 +258,112 @@ function renderLegis() {
   document.getElementById(id).addEventListener('change', renderLegis);
 });
 renderLegis();
+
+// ---- live data from the Google Sheet (overrides the fallback blocks) ----
+const SHEET_ID = '1B7qsupKNWZwGm1f9QGHeAA8nIMHxaNDymLKcOb1cOGo';
+function parseCSV(text) {
+  const rows = []; let row = [], cur = '', q = false;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (q) {
+      if (ch === '"') { if (text[i+1] === '"') { cur += '"'; i++; } else q = false; }
+      else cur += ch;
+    } else if (ch === '"') q = true;
+    else if (ch === ',') { row.push(cur); cur = ''; }
+    else if (ch === '\n') { row.push(cur); rows.push(row); row = []; cur = ''; }
+    else if (ch !== '\r') cur += ch;
+  }
+  if (cur !== '' || row.length) { row.push(cur); rows.push(row); }
+  return rows;
+}
+function colIdx(header, names) {
+  for (let i = 0; i < header.length; i++) {
+    const h = header[i].trim().toLowerCase();
+    if (names.some(n => h === n || h.includes(n))) return i;
+  }
+  return -1;
+}
+// map free-text status labels from the sheet to the internal codes
+function countyStatus(txt) {
+  const t = (txt || '').toLowerCase();
+  if (t.includes('pass')) return 'passed';
+  if (t.includes('draft')) return 'drafting';
+  if (t.includes('disc')) return 'discussed';   // catches "Discussed" and the "Discossed" typo
+  return 'none';
+}
+function stance(txt) {
+  const t = (txt || '').toLowerCase();
+  if (t.includes('oppos')) return 'opposed';
+  if (t.includes('support') || t.includes('favor') || t.includes('for the line')) return 'supports';
+  if (t.includes('mix')) return 'mixed';
+  return 'unknown';
+}
+// strip "Sen./Del." prefix and any glued-on "(R)Senate District 2" suffix -> bare name
+function cleanName(txt) {
+  return (txt || '')
+    .replace(/^\s*(?:(?:legislator|senator|sen|delegate|del)\.?\s+)+/i, '')  // strip stacked "Legislator Sen." prefixes
+    .split(/\s*\([RDI]\)/)[0]                 // cut at party marker
+    .replace(/\s*(house|senate)\s+district.*/i, '')
+    .replace(/\s+/g, ' ').trim();
+}
+function realSource(txt) {
+  const t = (txt || '').trim();
+  return /^https?:\/\//i.test(t) ? t : '';   // ignore placeholders like "link"
+}
+function loadSheet() {
+  const base = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/gviz/tq?tqx=out:csv';
+  const grab = u => fetch(base + u).then(r => { if (!r.ok) throw 0; return r.text(); });
+  // counties tab = gid 21235868 (fallback: a tab named "counties"); legislators = gid 0
+  const countiesText = grab('&gid=21235868').catch(() => grab('&sheet=counties')).catch(() => '');
+  const legisText = grab('&gid=0').catch(() => grab('&sheet=legislators')).catch(() => '');
+  Promise.all([countiesText, legisText]).then(([ctext, ltext]) => {
+    let applied = 0;
+    // ---- counties: has a clean header row (County | Status | Date | What happened | Source) ----
+    const crows = parseCSV(ctext).filter(r => r.length && (r[0] || '').trim());
+    if (crows.length) {
+      const h = crows[0].map(c => c.trim().toLowerCase());
+      const hasHeader = h.some(c => c.includes('county'));
+      const ci = Math.max(0, colIdx(crows[0], ['county'])),
+            si = colIdx(crows[0], ['status']), di = colIdx(crows[0], ['date']),
+            ni = colIdx(crows[0], ['what', 'note', 'happened']), ui = colIdx(crows[0], ['source', 'link', 'url']);
+      crows.slice(hasHeader ? 1 : 0).forEach(r => {
+        const nm = (r[ci] || '').trim().replace(/ county$/i, '');
+        const match = Object.keys(OPPOSITION).find(k => k.toLowerCase() === nm.toLowerCase());
+        if (!match) return;
+        OPPOSITION[match] = {
+          status: countyStatus(si >= 0 ? r[si] : ''),
+          date: di >= 0 ? (r[di] || '').trim() : '',
+          note: ni >= 0 ? (r[ni] || '').trim().replace(/^—$/, '') : '',
+          source: ui >= 0 ? realSource(r[ui]) : ''
+        };
+        applied++;
+      });
+    }
+    // ---- legislators: fixed column order (Name | Represents | Developer$ | Position | Note | Source);
+    //      row 0 may be a header (or a header merged into the first record) — match every row by name ----
+    parseCSV(ltext).forEach(r => {
+      if (!r.length) return;
+      const nm = cleanName(r[0]);
+      const match = LEGIS.find(l => l.name.toLowerCase() === nm.toLowerCase());
+      if (!match) return;
+      POSITION[match.key] = {
+        stance: stance(r[3]),
+        note: (r[4] || '').trim().replace(/^note\s*/i, ''),
+        source: realSource((r[5] || '').replace(/^source\s*/i, ''))
+      };
+      applied++;
+    });
+    renderCounties();
+    renderLegis();
+    document.getElementById('srcnote').textContent = applied
+      ? 'Live from the tracking sheet — ' + applied + ' entries applied.'
+      : 'Tracking sheet reached but no matching rows found — showing last published data.';
+  }).catch(() => {
+    document.getElementById('srcnote').textContent =
+      'Could not reach the tracking sheet — showing last published data.';
+  });
+}
+loadSheet();
 </script>
 </body>
 </html>
