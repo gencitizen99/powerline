@@ -17,33 +17,37 @@ Year,Company,Donor,Employer,Recipient,OfficeSought,District,Party,Election,Date,
 2024,AEP,American Electric Power Committee for Responsible Government,,Roger Hanshaw,House of Delegates,62,Republican,2024 Election,2024-09-04,2800.00
 2025,AEP,American electric power,,Tom Takubo,State Senator,17,Republican,2026 Election,2025-07-10,2800.00
 2025,NextEra,NextEra Inc. Political Action Committee,,John Bohen McCuskey,Undeclared,,Republican,2028 Election,2025-12-15,2800.00
-2026,Dominion,Dominion Energy Inc,,Matthew Alan Rohrbach,,,,,2026-04-02,2800.00
 2026,Dominion,Dominion Energy PAC,,Trenton Carl Barnhart,State Senator,3,Republican,2026 Election,2026-04-29,2800.00
+2026,Dominion,Dominion Energy Inc,,Matthew Alan Rohrbach,House of Delegates,26,Republican,2026 Election,2026-04-02,2800.00
 2026,Dominion,Dominion Energy Inc. PAC,,Bob Fehrenbacher,Undeclared,,Republican,2026 Election,2026-04-05,2800.00
-2026,AEP,American Electric Power Committee for Responsible Government,,Roger Hanshaw,,,,,2026-04-02,2800.00
-2026,FirstEnergy,First Energy,,Roger Hanshaw,,,,,2026-03-31,2800.00
-2026,Dominion,Dominion Energy Inc. PAC,,Mark Peter Zatezalo,,,,,2026-04-06,2800.00
+2026,Dominion,Dominion Energy Inc PAC,,Randy Edward Smith,Undeclared,,Republican,2028 Election,2026-04-08,2800.00
+2026,AEP,American Electric Power Committee for Responsible Government,,Roger Hanshaw,House of Delegates,62,Republican,2026 Election,2026-04-02,2800.00
+2026,FirstEnergy,First Energy,,Roger Hanshaw,House of Delegates,62,Republican,2026 Election,2026-03-31,2800.00
+2026,Dominion,Dominion Energy Inc Political Action,,Brian Helton,State Senator,9,Republican,2024 Election,2026-05-14,2800.00
 2026,Dominion,Dominion Energy Inc PAC,,Darren James Thorne,Undeclared,15,Republican,2026 Election,2026-04-01,2800.00
+2026,Dominion,Dominion Energy Inc. PAC,,Mark Peter Zatezalo,House of Delegates,2,Republican,2026 Election,2026-04-06,2800.00
 2026,Dominion,Dominion Energy Inc. Political Action Committee,,Ben Queen,State Senator,12,Republican,2026 Election,2026-04-20,2800.00
+2026,Dominion,Dominion Energy Inc PAC,,Randy Edward Smith,Undeclared,,Republican,2028 Election,2026-04-08,2800.00
 2026,FirstEnergy,FirstEnergy PAC,,Tom Takubo,State Senator,17,Republican,2026 Election,2026-03-16,2800.00
+2026,Dominion,Dominion Energy Inc Political Action,,Brian Helton,State Senator,9,Republican,2024 Election,2026-05-14,2800.00
 2026,Dominion,Dominion Energy Inc.PAC,,Mark Maynard,State Senator,6,Republican,2026 Election,2026-06-22,2800.00
 2026,AEP,Appalachian Power Co - Dist,,West Virginia Republican State Executive Committee Building Committee,,,Republican,2020 Election,2026-02-18,2500.00
 2024,FirstEnergy,First Energy Political Action Committee,,Roger Hanshaw,House of Delegates,62,Republican,2024 Election,2024-09-24,2000.00
 2024,AEP,American Electric Power,,Randy Smith,State Senator,14,Republican,2024 Election,2024-09-30,2000.00
 2024,NextEra,NextEra Energy Political Action Committee,,Roger Hanshaw,House of Delegates,62,Republican,2024 Election,2024-09-24,2000.00
 2024,AEP,American Electric Power Committee for Responsible Government,,John Bohen McCuskey,Attorney General,,Republican,2024 Election,2024-11-04,2000.00
-2025,AEP,American Electric Power Committee for Responsible Government,,Chris Phillips,,,,,2025-11-19,2000.00
+2025,AEP,American Electric Power Committee for Responsible Government,,Chris Phillips,House of Delegates,68,Republican,2026 Election,2025-11-19,2000.00
 2026,NextEra,NextEra PAC,,Ben Queen,State Senator,12,Republican,2026 Election,2026-04-07,2000.00
 2024,Dominion,Dominion Energy PAC,,Eric Nelson,State Senator,17,Republican,2024 Election,2024-06-20,1800.00
 2024,FirstEnergy,FirstEnergy PAC,,Gary Howell,House of Delegates,87,Republican,2024 Election,2024-03-18,1500.00
 2024,AEP,AARON WALKER,APPALACHIAN POWER,Patrick Morrisey,Governor,,Republican,2024 Election,2024-07-26,1500.00
 2024,FirstEnergy,FirstEnergy Political Action Committee,,Randy Smith,State Senator,14,Republican,2024 Election,2024-10-07,1500.00
 2025,AEP,American Electric Power,,Eric Tarr,State Senator,4,Republican,2026 Election,2025-06-24,1500.00
-2025,AEP,American Electric Power,,Vernon Criss,,,,,2025-09-10,1500.00
+2025,AEP,American Electric Power,,Vernon Criss,House of Delegates,12,Republican,2026 Election,2025-09-10,1500.00
 2025,AEP,American Electric Power,,Jason Barrett,State Senator,16,Republican,2026 Election,2025-10-06,1500.00
-2025,AEP,AEP Committee for Responsible Givernance,,Matthew Alan Rohrbach,,,,,2025-10-01,1500.00
+2025,AEP,AEP Committee for Responsible Givernance,,Matthew Alan Rohrbach,House of Delegates,26,Republican,2026 Election,2025-10-01,1500.00
 2025,AEP,AEP Committee For Responsible Government,,Pat Riley McGeehan,House of Delegates,1,Republican,2024 Election,2025-11-19,1500.00
-2026,AEP,American Electric Power--Committee For Responsible Government,,Everette William Anderson,,,,,2026-04-02,1500.00
+2026,AEP,American Electric Power--Committee For Responsible Government,,Everette William Anderson,House of Delegates,10,Republican,2026 Election,2026-04-02,1500.00
 2024,Dominion,ROBERT BLUE,DOMINION ENERGY,Patrick Morrisey,Governor,,Republican,2024 Election,2024-10-21,1041.98
 2024,FirstEnergy,FirstEnergy Political Action Committee,,Daniel Linville,House of Delegates,22,Republican,2024 Election,2024-09-18,1000.00
 2024,AEP,American Electric Power,,Mark Hunt,State Auditor,,Republican,2024 Election,2024-09-24,1000.00
@@ -54,29 +58,29 @@ Year,Company,Donor,Employer,Recipient,OfficeSought,District,Party,Election,Date,
 2024,AEP,American Electric Power,,Glenn D Jeffries,State Senator,8,Republican,2024 Election,2024-10-01,1000.00
 2024,FirstEnergy,First Energy Political Action Committee,,Jack David Woodrum,State Senator,10,Republican,2024 Election,2024-10-10,1000.00
 2024,AEP,ROBERT A JESSEE,AMERICAN ELECTRIC POWER,Patrick Morrisey,Governor,,Republican,2024 Election,2024-07-26,1000.00
-2024,FirstEnergy,First Energy PAC,,Eric Nelson,State Senator,17,Republican,2024 Election,2024-09-30,1000.00
-2024,AEP,AEP,,Donna Boley,State Senator,3,Republican,2024 Election,2024-04-20,1000.00
 2024,AEP,American Electric Power Committee for Responsible Government,,Jeffrey Disibbio,State Senator,6,Democrat,2024 Election,2024-10-09,1000.00
+2024,FirstEnergy,First Energy PAC,,Eric Nelson,State Senator,17,Republican,2024 Election,2024-09-30,1000.00
+2024,NextEra,NextEra Energy Inc PAC,,Randy Smith,State Senator,14,Republican,2024 Election,2024-10-15,1000.00
+2024,AEP,AEP,,Donna Boley,State Senator,3,Republican,2024 Election,2024-04-20,1000.00
 2024,AEP,American Electric Power Committee for Responsible Government,,Evan Worrell,House of Delegates,23,Republican,2024 Election,2024-04-10,1000.00
 2024,AEP,American Electric Power,,Kristian Esgridge Warner,Secretary of State,,Republican,2024 Election,2024-04-19,1000.00
 2024,AEP,American Electric Power Committee for Responsible Government,,Jack David Woodrum,State Senator,10,Republican,2024 Election,2024-10-10,1000.00
 2024,AEP,American Electric Power Committee for Responsible Government,,Christopher Andrew Rose,State Senator,2,Republican,2024 Election,2024-09-09,1000.00
 2024,AEP,BRAD N HALL,APPALACHIAN POWER,Patrick Morrisey,Governor,,Republican,2024 Election,2024-07-26,1000.00
-2024,NextEra,NextEra Energy Inc PAC,,Randy Smith,State Senator,14,Republican,2024 Election,2024-10-15,1000.00
 2024,NextEra,NextEra Energy Inc Political Action Commitee,,Gary Howell,House of Delegates,87,Republican,2024 Election,2024-10-14,1000.00
 2024,AEP,American Electric Power Committee for Responsible Government,,Daniel Linville,House of Delegates,22,Republican,2024 Election,2024-08-26,1000.00
-2024,AEP,American Electric Power,,Eric Householder,State Auditor,,Republican,2024 Election,2024-03-19,1000.00
-2024,FirstEnergy,FirstEnergy PAC,,Ryan W. Weld,State Senator,1,Republican,2024 Election,2024-12-27,1000.00
 2024,AEP,American Electric Power,,Larry A Pack,State Treasurer,,Republican,2024 Election,2024-03-22,1000.00
 2024,AEP,American Electric Power Committee for Responsible Government,,Sean Hornbuckle,House of Delegates,25,Democrat,2024 Election,2024-09-20,1000.00
+2024,AEP,American Electric Power,,Eric Householder,State Auditor,,Republican,2024 Election,2024-03-19,1000.00
+2024,FirstEnergy,FirstEnergy PAC,,Ryan W. Weld,State Senator,1,Republican,2024 Election,2024-12-27,1000.00
 2024,Dominion,DOMINION ENERGY INC. POLITICAL ACTION COMMITTEE - DOMINION PAC,,Patrick Morrisey,Attorney General,,Republican,2016 Election,2024-10-16,1000.00
 2024,AEP,American Electric Power Committee for Responsible Government,,Ryan W. Weld,State Senator,1,Republican,2024 Election,2024-10-09,1000.00
 2024,Dominion,JAMES BEAMER,DOMINION ENERGY,Patrick Morrisey,Attorney General,,Republican,2012 Election,2024-10-10,1000.00
-2024,FirstEnergy,FIRST ENERGY PAC,,Rupert Phillips,State Senator,7,Republican,2024 Election,2024-01-22,1000.00
 2024,FirstEnergy,First Energy PAC,,Kent Leonhardt,Commissioner of Agriculture,,Republican,2024 Election,2024-09-19,1000.00
+2024,FirstEnergy,FIRST ENERGY PAC,,Rupert Phillips,State Senator,7,Republican,2024 Election,2024-01-22,1000.00
 2024,AEP,American Electric Power Committee for Responsible Government,,Evan Worrell,House of Delegates,23,Republican,2024 Election,2024-09-25,1000.00
-2024,AEP,American Electric Power Committee for Responsible Government,,Jeffrey Disibbio,State Senator,6,Democrat,2024 Election,2024-10-09,1000.00
 2024,AEP,American Electric Power PAC,,Kent Leonhardt,Commissioner of Agriculture,,Republican,2024 Election,2024-03-14,1000.00
+2024,AEP,American Electric Power Committee for Responsible Government,,Jeffrey Disibbio,State Senator,6,Democrat,2024 Election,2024-10-09,1000.00
 2024,AEP,JASON E BAKER,APPALACHIAN POWER,Patrick Morrisey,Governor,,Republican,2024 Election,2024-07-26,1000.00
 2024,AEP,American Electric Power,,Clay Riley,House of Delegates,72,Republican,2024 Election,2024-10-14,1000.00
 2024,AEP,American Electric Power - Committee for Responsible Government,,"Robert ""Robbie"" L. Morris",State Senator,11,Republican,2024 Election,2024-09-24,1000.00
@@ -110,91 +114,96 @@ Year,Company,Donor,Employer,Recipient,OfficeSought,District,Party,Election,Date,
 2025,FirstEnergy,ABBY REALE,FIRST ENERGY,Patrick Morrisey,Attorney General,,Republican,2012 Election,2025-01-31,1000.00
 2025,AEP,American Electric Power Committee for Responsible Government,,Bill Hamilton,State Senator,11,Republican,2026 Election,2025-06-24,1000.00
 2025,FirstEnergy,First Energy PAC,,Eric Tarr,State Senator,4,Republican,2026 Election,2025-08-16,1000.00
-2025,Dominion,Dominion Energy PAC,,Ben Queen,State Senator,12,Republican,2026 Election,2025-11-05,1000.00
 2025,AEP,American Electric Power PAC,,Michael Angelo Oliverio,State Senator,13,Republican,2026 Election,2025-09-22,1000.00
-2025,AEP,american electric power,,Marty Gearheart,,,,,2025-09-09,1000.00
-2025,AEP,AEP Communications for Responsible Govt,,Kathie Hess Crouse,,,,,2025-10-06,1000.00
+2025,AEP,american electric power,,Marty Gearheart,House of Delegates,37,Republican,2026 Election,2025-09-09,1000.00
+2025,Dominion,Dominion Energy PAC,,Ben Queen,State Senator,12,Republican,2026 Election,2025-11-05,1000.00
+2025,AEP,AEP Communications for Responsible Govt,,Kathie Hess Crouse,House of Delegates,19,Republican,2026 Election,2025-10-06,1000.00
 2025,FirstEnergy,First Energy PAC,,Jason Barrett,State Senator,16,Republican,2026 Election,2025-10-06,1000.00
 2025,Dominion,Dominion Energy PAC,,Tom Takubo,State Senator,17,Republican,2026 Election,2025-07-10,1000.00
-2025,AEP,American Electric Power Committee for Responsible Government,,Ben Queen,State Senator,12,Republican,2026 Election,2025-09-23,1000.00
 2025,FirstEnergy,First Energy PAC,,Bill Hamilton,State Senator,11,Republican,2026 Election,2025-07-29,1000.00
 2025,AEP,American Electric Power,,Zack Maynard,State Senator,7,Republican,2026 Election,2025-12-09,1000.00
-2025,AEP,American Electric Power Committee for Responsible Government,,JB Akers,,,,,2025-05-22,1000.00
-2025,AEP,AEP Committee for Responsible Power,,Gary Howell,,,,,2025-09-23,1000.00
-2025,AEP,American Electric Power,,Scot C Heckert,,,,,2025-07-28,1000.00
+2025,AEP,American Electric Power Committee for Responsible Government,,JB Akers,House of Delegates,55,Republican,2026 Election,2025-05-22,1000.00
+2025,AEP,American Electric Power Committee for Responsible Government,,Ben Queen,State Senator,12,Republican,2026 Election,2025-09-23,1000.00
+2025,AEP,AEP Committee for Responsible Power,,Gary Howell,House of Delegates,87,Republican,2026 Election,2025-09-23,1000.00
+2025,AEP,American Electric Power,,Scot C Heckert,House of Delegates,13,Republican,2026 Election,2025-07-28,1000.00
 2025,Dominion,PAUL BASTIN,DOMINION ENERGY,Patrick Morrisey,Attorney General,,Republican,2012 Election,2025-01-16,1000.00
-2025,AEP,AEP Committee for Responsible Government,,Mark Peter Zatezalo,,,,,2025-10-29,1000.00
-2026,FirstEnergy,First Energy PAC,,Marty Gearheart,,,,,2026-01-06,1000.00
+2025,AEP,AEP Committee for Responsible Government,,Mark Peter Zatezalo,House of Delegates,2,Republican,2026 Election,2025-10-29,1000.00
+2026,FirstEnergy,First Energy PAC,,Marty Gearheart,House of Delegates,37,Republican,2026 Election,2026-01-06,1000.00
 2026,FirstEnergy,FirstEnergy PAC,,Michael Angelo Oliverio,State Senator,13,Republican,2026 Election,2026-01-21,1000.00
-2026,FirstEnergy,First Energy PAC,,Everette William Anderson,,,,,2026-01-04,1000.00
 2026,AEP,Sammy L Gray,AEP,Steven Carder Eshenaur,State Senator,8,Republican,2026 Election,2026-03-16,1000.00
+2026,FirstEnergy,First Energy PAC,,Everette William Anderson,House of Delegates,10,Republican,2026 Election,2026-01-04,1000.00
 2026,FirstEnergy,FirstEnergy Political Action Committee,,Ben Queen,State Senator,12,Republican,2026 Election,2026-04-20,1000.00
+2026,AEP,American Electric Power Committee for a Responsible Goverment,,Christopher Miller,State Senator,5,Republican,2026 Election,2026-06-29,1000.00
 2026,AEP,American Electric Power,,Michael Louis Antolini,State Senator,9,Republican,2026 Election,2026-04-02,1000.00
 2026,FirstEnergy,FirstEnergy Political Action Committee,,Vincent Scott Deeds,State Senator,10,Republican,2026 Election,2026-05-19,1000.00
-2026,FirstEnergy,first energy PAC,,Vernon Criss,,,,,2026-01-07,1000.00
+2026,FirstEnergy,first energy PAC,,Vernon Criss,House of Delegates,12,Republican,2026 Election,2026-01-07,1000.00
 2026,AEP,American Electric Power Committee for Responsible Government,,Steven Carder Eshenaur,State Senator,8,Republican,2026 Election,2026-04-02,1000.00
 2026,FirstEnergy,First Energy PAC,,Jason Barrett,State Senator,16,Republican,2026 Election,2026-05-19,1000.00
-2026,FirstEnergy,FirstEnergy PAC,,Gary Howell,,,,,2026-06-03,1000.00
+2026,FirstEnergy,FirstEnergy PAC,,Gary Howell,House of Delegates,87,Republican,2026 Election,2026-06-03,1000.00
+2026,AEP,American Electric Power Committee For Responsible Government PAC,,Robert Joel Dobkin,State Senator,2,Republican,2026 Election,2026-04-28,1000.00
 2026,FirstEnergy,First Energy PAC,,Jason Barrett,State Senator,16,Republican,2026 Election,2026-01-05,1000.00
-2026,Dominion,Dominion Energy Inc. Political Action Committee,,JB Akers,,,,,2026-04-30,1000.00
-2026,AEP,AEP Committee for Responsible Power,,Gary Howell,,,,,2026-05-02,1000.00
+2026,Dominion,Dominion Energy Inc,,Eric Tarr,State Senator,4,Republican,2026 Election,2026-04-27,1000.00
+2026,FirstEnergy,FirstEnergy Political Action Committee,,Ben Queen,State Senator,12,Republican,2026 Election,2026-06-24,1000.00
+2026,Dominion,Dominion Energy Inc. Political Action Committee,,JB Akers,House of Delegates,55,Republican,2026 Election,2026-04-30,1000.00
+2026,AEP,AEP Committee for Responsible Power,,Gary Howell,House of Delegates,87,Republican,2026 Election,2026-05-02,1000.00
 2026,FirstEnergy,FirstEnergy Political Action Committee,,Vincent Scott Deeds,State Senator,10,Republican,2026 Election,2026-03-23,1000.00
 2026,Dominion,Dominion Energy Inc. PAC,,Jason Barrett,State Senator,16,Republican,2026 Election,2026-04-27,1000.00
-2026,AEP,AEP Committee on Responsible Government,,Clay Patrick Riley,,,,,2026-02-07,1000.00
+2026,AEP,AEP Committee on Responsible Government,,Clay Patrick Riley,House of Delegates,72,Republican,2026 Election,2026-02-07,1000.00
 2026,AEP,American Electric Power,,Michael Jarrouj,State Senator,17 - Unexpired Term,Republican,2026 Election,2026-04-02,1000.00
+2026,FirstEnergy,FirstEnergy PAC,,Christopher Miller,State Senator,5,Republican,2026 Election,2026-05-19,1000.00
 2026,FirstEnergy,Abby Reale,FirstEnergy,West Virginia Republican Legislative Committee,,,Republican,,2026-02-05,960.60
 2024,Dominion,Dominion Energy Political Action Committee,,Roger Hanshaw,House of Delegates,62,Republican,2024 Election,2024-06-20,800.00
 2024,Dominion,MARK MITCHELL,DOMINION ENERGY,Patrick Morrisey,Governor,,Republican,2024 Election,2024-10-28,521.15
-2024,FirstEnergy,FirstEnergy Political Action Committee,,Stephen David Green,,,,,2024-11-12,500.00
-2024,FirstEnergy,FirstEnergy,,Charles R. Sheedy,House of Delegates,7,Republican,2024 Election,2024-11-25,500.00
+2024,FirstEnergy,FirstEnergy Political Action Committee,,Stephen David Green,House of Delegates,36,Republican,2026 Election,2024-11-12,500.00
 2024,AEP,American Electric Power committee for Responsible Government,,"Frederick ""Happy Joe"" Parsons",House of Delegates,16,Republican,2024 Election,2024-09-11,500.00
-2024,FirstEnergy,First Energy Political Action Committee,,Mike Hornby,House of Delegates,93,Republican,2024 Election,2024-11-20,500.00
+2024,FirstEnergy,FirstEnergy,,Charles R. Sheedy,House of Delegates,7,Republican,2024 Election,2024-11-25,500.00
 2024,AEP,AMERICAN ELECTRIC POWER,,Walter Hall,House of Delegates,58,Republican,2024 Election,2024-10-10,500.00
 2024,AEP,American Electric Power Committee for Responsible Government,,George Street,House of Delegates,83,Republican,2024 Election,2024-10-22,500.00
 2024,AEP,American Electric Power Committee for Responsible Government,,Jarred Cannon,House of Delegates,21,Republican,2024 Election,2024-04-10,500.00
-2024,AEP,American Electric Power/Committee for Responsible Government,,Thomas C. Clark,House of Delegates,48,Republican,2024 Election,2024-09-24,500.00
+2024,FirstEnergy,First Energy Political Action Committee,,Mike Hornby,House of Delegates,93,Republican,2024 Election,2024-11-20,500.00
 2024,AEP,American Electric Power Committee for Responsible Government,,Lori Cowger Dittman,House of Delegates,63,Republican,2024 Election,2024-04-17,500.00
-2024,AEP,american electric power,,Marty Gearheart,House of Delegates,37,Republican,2024 Election,2024-09-23,500.00
+2024,AEP,American Electric Power/Committee for Responsible Government,,Thomas C. Clark,House of Delegates,48,Republican,2024 Election,2024-09-24,500.00
 2024,AEP,American Electric Power,,Jordan Maynor,House of Delegates,41,Republican,2024 Election,2024-03-14,500.00
+2024,AEP,American Electric Power,,Scot C. Heckert,House of Delegates,13,Republican,2024 Election,2024-04-10,500.00
+2024,FirstEnergy,First Energy Political Action Committee,,David Lee McCormick,House of Delegates,82,Republican,2024 Election,2024-11-19,500.00
+2024,AEP,american electric power,,Marty Gearheart,House of Delegates,37,Republican,2024 Election,2024-09-23,500.00
+2024,Dominion,James W. Beamer,Dominion Energy,West Virginia Chamber of Commerce (The Chamber PAC),,,,2018 Election,2024-07-24,500.00
+2024,AEP,American Electric Power Committee for Responsible Government,,Michael Hite,House of Delegates,92,Republican,2024 Election,2024-04-23,500.00
 2024,AEP,American Electric Power,,Tresa Howell,House of Delegates,52,Republican,2024 Election,2024-10-10,500.00
 2024,FirstEnergy,First Energy PAC,,Vernon Criss,House of Delegates,12,Republican,2024 Election,2024-10-02,500.00
-2024,AEP,American Electric Power,,Scot C. Heckert,House of Delegates,13,Republican,2024 Election,2024-04-10,500.00
 2024,AEP,American Electric Power PAC,,David Lee McCormick,House of Delegates,82,Republican,2024 Election,2024-04-23,500.00
-2024,FirstEnergy,FirstEnergy PAC,,Brandon Steele,House of Delegates,42,Republican,2024 Election,2024-10-02,500.00
 2024,AEP,American Electric Power,,Scot C. Heckert,House of Delegates,13,Republican,2024 Election,2024-10-11,500.00
-2024,FirstEnergy,First Energy Political Action Committee,,David Lee McCormick,House of Delegates,82,Republican,2024 Election,2024-11-19,500.00
+2024,AEP,American Electric Power Committee for Responsible Government,,Joe Ellington,House of Delegates,38,Republican,2024 Election,2024-09-24,500.00
+2024,FirstEnergy,FirstEnergy PAC,,Brandon Steele,House of Delegates,42,Republican,2024 Election,2024-10-02,500.00
 2024,FirstEnergy,FirstEnergy Political Action Committee,,Jarred Cannon,House of Delegates,21,Republican,2024 Election,2024-10-01,500.00
 2024,AEP,American Electric Power Committee for Responsible Government,,James (Bill) William Flanigan,House of Delegates,4,Republican,2024 Election,2024-10-03,500.00
 2024,FirstEnergy,FirstEnergy Political Action Committee,,Wayne M. Clark,House of Delegates,99,Republican,2024 Election,2024-11-12,500.00
-2024,Dominion,James W. Beamer,Dominion Energy,West Virginia Chamber of Commerce (The Chamber PAC),,,,2018 Election,2024-07-24,500.00
 2024,AEP,American Electric Power Committee for Responsible Government,,George Street,House of Delegates,83,Republican,2024 Election,2024-05-17,500.00
-2024,AEP,American Electric Power Committee for Responsible Government,,Michael Hite,House of Delegates,92,Republican,2024 Election,2024-04-23,500.00
+2024,FirstEnergy,FirstEnergy Political Action Committee,,Bob Fehrenbacher,House of Delegates,11,Republican,2024 Election,2024-10-03,500.00
 2024,FirstEnergy,FirstEnergy Political Action Committee,,John Paul Hott,House of Delegates,85,Republican,2024 Election,2024-11-22,500.00
-2024,AEP,American Electric Power Committee for Responsible Government,,Joe Ellington,House of Delegates,38,Republican,2024 Election,2024-09-24,500.00
+2024,Dominion,Dominion Energy Inc. PAC,,"Frederick ""Happy Joe"" Parsons",House of Delegates,16,Republican,2024 Election,2024-02-21,500.00
 2024,Dominion,Dominion Energy PAC,,Greg Scott Ingram,House of Delegates,52,Republican,2024 Election,2024-02-16,500.00
 2024,AEP,american electric power,,Marty Gearheart,House of Delegates,37,Republican,2022 Election,2024-03-14,500.00
 2024,FirstEnergy,FirstEnergy Political Action Committee,,David Kelly,House of Delegates,8,Republican,2024 Election,2024-10-02,500.00
 2024,AEP,American Electric Powervani,,Sarah Elizabeth Drennan,House of Delegates,20,Republican,2024 Election,2024-08-14,500.00
-2024,FirstEnergy,FirstEnergy Political Action Committee,,Bob Fehrenbacher,House of Delegates,11,Republican,2024 Election,2024-10-03,500.00
 2024,FirstEnergy,FirstEnergy Political Action Committee,,Laura Kimble,House of Delegates,71,Republican,2024 Election,2024-09-24,500.00
-2024,Dominion,Dominion Energy Inc. PAC,,"Frederick ""Happy Joe"" Parsons",House of Delegates,16,Republican,2024 Election,2024-02-21,500.00
 2024,AEP,American Electric Power-Committee for Responsible Government,,Jim Butler,House of Delegates,18,Republican,2024 Election,2024-10-09,500.00
 2024,FirstEnergy,FirstEnergy Political Action Committee,,Kathie Hess Crouse,House of Delegates,19,Republican,2024 Election,2024-10-01,500.00
 2024,AEP,American Electric Power/Committee for Responsible Government,,Thomas C. Clark,House of Delegates,48,Republican,2024 Election,2024-04-17,500.00
 2024,AEP,American Electric Power,,John Paul Hott,House of Delegates,85,Republican,2024 Election,2024-04-17,500.00
 2024,AEP,American Electric Power,,Dana J Ferrell,House of Delegates,60,Republican,2024 Election,2024-10-09,500.00
 2024,AEP,American Electric Powervani,,Sarah Elizabeth Drennan,House of Delegates,20,Republican,2024 Election,2024-05-01,500.00
+2024,AEP,American Electric Power PAC,,Trenton Barnhart,House of Delegates,9,Republican,2024 Election,2024-04-10,500.00
+2024,FirstEnergy,First Energy Political Action Committee,,Brian Helton,State Senator,9,Republican,2024 Election,2024-11-12,500.00
 2024,AEP,American Electric Power,,Shawn Fluharty,House of Delegates,5,Democrat,2024 Election,2024-04-17,500.00
 2024,AEP,American Electric Power Committee for Responsible Government,,Jarred Cannon,House of Delegates,21,Republican,2024 Election,2024-09-04,500.00
 2024,AEP,AEP,,Patrick Lucas,House of Delegates,24,Republican,2024 Election,2024-05-03,500.00
+2024,AEP,Timothy Meadows,AEP,Steven Ryan White,Intermediate Court Judge of Appeals,,Non Partisan,2024 Election,2024-05-05,500.00
 2024,AEP,American Electric Power,,Mike Hornby,House of Delegates,93,Republican,2024 Election,2024-04-29,500.00
 2024,AEP,American Electric Power committee for Responsible Government,,"Frederick ""Happy Joe"" Parsons",House of Delegates,16,Republican,2024 Election,2024-04-10,500.00
-2024,AEP,American Electric Power PAC,,Trenton Barnhart,House of Delegates,9,Republican,2024 Election,2024-04-10,500.00
-2024,FirstEnergy,First Energy Political Action Committee,,Brian Helton,State Senator,9,Republican,2024 Election,2024-11-12,500.00
-2024,AEP,American Electric Power,,Joe Statler,House of Delegates,77,Republican,2024 Election,2024-10-14,500.00
-2024,AEP,Timothy Meadows,AEP,Steven Ryan White,Intermediate Court Judge of Appeals,,Non Partisan,2024 Election,2024-05-05,500.00
 2024,Dominion,Dominion Energy Inc. Political Action Committee- Dominion PAC,,George Street,House of Delegates,83,Republican,2024 Election,2024-10-22,500.00
 2024,AEP,American Electric Power,,Andy Shamblin,House of Delegates,59,Republican,2024 Election,2024-03-14,500.00
+2024,AEP,American Electric Power,,Joe Statler,House of Delegates,77,Republican,2024 Election,2024-10-14,500.00
 2024,AEP,American Electric Power,,Andy Shamblin,House of Delegates,59,Republican,2024 Election,2024-09-11,500.00
 2024,Dominion,JEFFREY MISCIKOWSKI,DOMINION ENERGY,Patrick Morrisey,Attorney General,,Republican,2012 Election,2024-10-09,500.00
 2024,AEP,AEP,,Patrick Lucas,House of Delegates,24,Republican,2024 Election,2024-10-22,500.00
@@ -236,47 +245,61 @@ Year,Company,Donor,Employer,Recipient,OfficeSought,District,Party,Election,Date,
 2024,FirstEnergy,first energy pac,,Marty Gearheart,House of Delegates,37,Republican,2024 Election,2024-10-02,500.00
 2024,AEP,American Electric Power Committee for Responsible Government,,JB Akers,House of Delegates,55,Republican,2024 Election,2024-04-29,500.00
 2024,FirstEnergy,First Energy PAC,,Adam Dwayne Burkhammer,House of Delegates,64,Republican,2024 Election,2024-11-26,500.00
-2025,AEP,American Electric Power,,Charles R. Sheedy,,,,,2025-10-24,500.00
-2025,AEP,American Electric Power,,Geno Chiarelli,,,,,2025-09-09,500.00
-2025,AEP,American Electric Power Committee for Responsible Government,,Erica Jeanne Moore,,,,,2025-09-23,500.00
-2025,FirstEnergy,FirstEnergy PAC,,Michael Hite,,,,,2025-10-29,500.00
-2025,FirstEnergy,First Energy Political Action Committee,,Joe Funkhouser,,,,,2025-02-10,500.00
-2025,AEP,American Electric Power Committee for Responsible Government,,Lori Dittman,,,,,2025-09-09,500.00
-2025,AEP,American Electric Power,,Michael Hornby,,,,,2025-12-08,500.00
+2025,AEP,American Electric Power,,Charles R. Sheedy,House of Delegates,7,Republican,2026 Election,2025-10-24,500.00
+2025,AEP,American Electric Power,,Geno Chiarelli,House of Delegates,78,Republican,2026 Election,2025-09-09,500.00
+2025,AEP,American Electric Power- Committee for Responsible Government,,Samuel Lusk,House of Delegates,39,Republican,2026 Election,2025-12-02,500.00
+2025,AEP,American Electric Power Committee for Responsible Government,,Erica Jeanne Moore,House of Delegates,15,Republican,2026 Election,2025-09-23,500.00
+2025,FirstEnergy,FirstEnergy PAC,,Michael Hite,House of Delegates,92,Republican,2026 Election,2025-10-29,500.00
+2025,FirstEnergy,First Energy Political Action Committee,,Joe Funkhouser,House of Delegates,98,Republican,2026 Election,2025-02-10,500.00
+2025,AEP,American Electric Power,,Michael Hornby,House of Delegates,93,Republican,2026 Election,2025-12-08,500.00
 2025,Dominion,Dominion Energy,,Eric Tarr,State Senator,4,Republican,2026 Election,2025-07-07,500.00
 2025,Dominion,Dominion Energy Inc,,Eric Tarr,State Senator,4,Republican,2026 Election,2025-07-08,500.00
-2025,AEP,AMERICAN ELECTRIC POWER,,Walter Hall,,,,,2025-08-15,500.00
-2025,Dominion,James W. Beamer,Dominion Energy,West Virginia Chamber of Commerce (The Chamber PAC),,,,2018 Election,2025-08-01,500.00
-2025,AEP,American Electric Power,,Andy Shamblin,,,,,2025-07-10,500.00
-2025,AEP,American Electric Power,,Jordan A. Maynor,,,,,2025-09-09,500.00
-2025,AEP,American Electric Power - Committee for Responsible Government,,David McCormick,,,,,2025-09-23,500.00
-2025,AEP,American Electric Power- Committee for Responsible Government,,Samuel Lusk,,,,,2025-12-02,500.00
-2025,AEP,American Electric Power,,Bryan Clark Ward,,,,,2025-10-09,500.00
-2025,AEP,The American Electric Power Committee for Responsible Government,,Katie Scarlett Rose,,,,,2025-11-19,500.00
+2025,AEP,American Electric Power Committee for Responsible Government,,Lori Dittman,House of Delegates,63,Republican,2026 Election,2025-09-09,500.00
+2025,AEP,American Electric Power,,Andy Shamblin,House of Delegates,59,Republican,2026 Election,2025-07-10,500.00
+2025,AEP,American Electric Power,,Jordan A. Maynor,House of Delegates,41,Republican,2026 Election,2025-09-09,500.00
+2025,AEP,American Electric Power - Committee for Responsible Government,,David McCormick,House of Delegates,82,Republican,2026 Election,2025-09-23,500.00
+2025,AEP,AMERICAN ELECTRIC POWER,,Walter Hall,House of Delegates,58,Republican,2026 Election,2025-08-15,500.00
+2025,AEP,American Electric Power,,Bryan Clark Ward,House of Delegates,86,Republican,2026 Election,2025-10-09,500.00
 2025,FirstEnergy,FirstEnergy Political Action Committee,,Josh Holstein,House of Delegates,32,Republican,2024 Election,2025-04-04,500.00
-2025,FirstEnergy,First Energy Political Action Committee,,Clay Patrick Riley,,,,,2025-04-16,500.00
-2025,AEP,The American Electric Power Committee for Responsible Government,,Andrew Allen Daniel,,,,,2025-11-19,500.00
+2025,Dominion,James W. Beamer,Dominion Energy,West Virginia Chamber of Commerce (The Chamber PAC),,,,2018 Election,2025-08-01,500.00
+2025,AEP,The American Electric Power Committee for Responsible Government,,Andrew Allen Daniel,House of Delegates,14,Republican,2026 Election,2025-11-19,500.00
 2025,AEP,American Electric Power Committee For Responsible Government,,Trenton Carl Barnhart,State Senator,3,Republican,2026 Election,2025-09-25,500.00
+2025,AEP,The American Electric Power Committee for Responsible Government,,Katie Scarlett Rose,House of Delegates,96,Republican,2026 Election,2025-11-19,500.00
+2025,FirstEnergy,First Energy Political Action Committee,,Clay Patrick Riley,House of Delegates,72,Republican,2026 Election,2025-04-16,500.00
 2025,Dominion,Dominion Energy Inc. PAC,,Bill Hamilton,State Senator,11,Republican,2026 Election,2025-06-30,500.00
-2025,FirstEnergy,First Energy PAC,,Joshua Allen Holstein,,,,,2025-04-02,500.00
-2025,AEP,American Electric Power Committee for Responsible Government,,"Warren ""Dean"" Jeffries",,,,,2025-10-01,500.00
-2025,AEP,Appalachian Power,,Joe Carey Ellington,,,,,2025-10-04,500.00
+2025,FirstEnergy,First Energy PAC,,Joshua Allen Holstein,House of Delegates,32,Republican,2026 Election,2025-04-02,500.00
+2025,AEP,American Electric Power Committee for Responsible Government,,"Warren ""Dean"" Jeffries",House of Delegates,61,Republican,2026 Election,2025-10-01,500.00
+2025,AEP,Appalachian Power,,Joe Carey Ellington,House of Delegates,38,Republican,2026 Election,2025-10-04,500.00
 2025,AEP,AEP,,Patrick Lucas,House of Delegates,24,Republican,2024 Election,2025-09-08,500.00
-2025,AEP,American Electric Power,,Gregory A Watt,,,,,2025-11-19,500.00
-2025,AEP,AMERICAN ELECTRIC POWER,,Ryan O Browning,,,,,2025-10-07,500.00
-2026,NextEra,NextEra Inc Political Action Committee,,Mark Peter Zatezalo,,,,,2026-04-01,500.00
-2026,AEP,American Electric Power Committee for Responsible Government,,Guy Ward,,,,,2026-04-09,500.00
-2026,FirstEnergy,FirstEnergy PAC,,JB Akers,,,,,2026-05-19,500.00
-2026,NextEra,Maciej Pawlowski,NextEra Energy,Gary Howell,,,,,2026-04-30,500.00
+2025,AEP,American Electric Power,,Gregory A Watt,House of Delegates,48,Republican,2026 Election,2025-11-19,500.00
+2025,AEP,AMERICAN ELECTRIC POWER,,Ryan O Browning,House of Delegates,28,Republican,2026 Election,2025-10-07,500.00
+2026,FirstEnergy,First Energy Political Action Committee,,Michael Hornby,House of Delegates,93,Republican,2026 Election,2026-06-23,500.00
+2026,AEP,American Electric Power Committee for Responsible Government,,Guy Ward,House of Delegates,74,Republican,2026 Election,2026-04-09,500.00
+2026,NextEra,NextEra Inc Political Action Committee,,Mark Peter Zatezalo,House of Delegates,2,Republican,2026 Election,2026-04-01,500.00
+2026,Dominion,Dominion Energy Inc PAC,,Robert Joel Dobkin,State Senator,2,Republican,2026 Election,2026-05-06,500.00
+2026,NextEra,Maciej Pawlowski,NextEra Energy,Gary Howell,House of Delegates,87,Republican,2026 Election,2026-04-30,500.00
+2026,FirstEnergy,FirstEnergy PAC,,JB Akers,House of Delegates,55,Republican,2026 Election,2026-05-19,500.00
+2026,FirstEnergy,FirstEnergy Political Action Committee,,Sean Hornbuckle,House of Delegates,25,Democrat,2026 Election,2026-05-19,500.00
+2026,Dominion,Dominion Energy PAC,,Michael Angelo Oliverio,State Senator,13,Republican,2026 Election,2026-06-02,500.00
 2026,AEP,AEP - Committee for Responsible Government,,Derek Joseph Ennis,House of Delegates,4,Republican,2026 Election,2026-04-22,500.00
-2026,Dominion,Dominion Energy Political Action Committee,,Gary Howell,,,,,2026-04-29,500.00
 2026,FirstEnergy,First Energy Political Action Committee,,Mark Maynard,State Senator,6,Republican,2026 Election,2026-01-08,500.00
-2026,NextEra,NextEra PAC,,Everette William Anderson,,,,,2026-03-17,500.00
+2026,Dominion,Dominion Energy Political Action Committee,,Gary Howell,House of Delegates,87,Republican,2026 Election,2026-04-29,500.00
+2026,NextEra,Nextera,,Clay Patrick Riley,House of Delegates,72,Republican,2026 Election,2026-05-02,500.00
+2026,FirstEnergy,FirstEnergy Political Action Committee,,Kayla Young,Undeclared,56,Democrat,2026 Election,2026-05-19,500.00
+2026,Dominion,Dominion Energy Inc. PAC,,Frederick Rick Hillenbrand,Undeclared,88,Republican,2026 Election,2026-04-29,500.00
+2026,Dominion,Dominion Energy Inc. PAC,,Tristan Leavitt,House of Delegates,53,Republican,2026 Election,2026-04-27,500.00
+2026,FirstEnergy,FirstEnergy PAC,,Michael Angelo Oliverio,State Senator,13,Republican,2026 Election,2026-06-26,500.00
+2026,NextEra,NextEra PAC,,Everette William Anderson,House of Delegates,10,Republican,2026 Election,2026-03-17,500.00
 2026,FirstEnergy,First Energy PAC,,George Miller,House of Delegates,90,Republican,2026 Election,2026-05-19,500.00
-2026,FirstEnergy,First Energy Political Action Committee,,Clay Patrick Riley,,,,,2026-02-07,500.00
-2026,AEP,American Electric Power,,Joe C Statler,,,,,2026-04-24,500.00
-2026,FirstEnergy,FirstEnergy Political Action Comm,,Scot C Heckert,,,,,2026-01-12,500.00
+2026,FirstEnergy,First Energy Political Action Committee,,David McCormick,House of Delegates,82,Republican,2026 Election,2026-06-04,500.00
+2026,Dominion,Dominion Energy Inc. PAC,,Chris Phillips,House of Delegates,68,Republican,2026 Election,2026-05-04,500.00
+2026,Dominion,Dominion Energy PAC,,Joshua Allen Holstein,House of Delegates,32,Republican,2026 Election,2026-04-27,500.00
+2026,FirstEnergy,First Energy Political Action Committee,,Clay Patrick Riley,House of Delegates,72,Republican,2026 Election,2026-02-07,500.00
+2026,AEP,American Electric Power,,Joe C Statler,House of Delegates,77,Republican,2026 Election,2026-04-24,500.00
+2026,FirstEnergy,First Energy Political Action Committee,,Jonathan Bertrand Kyle,House of Delegates,66,Republican,2026 Election,2026-06-09,500.00
+2026,FirstEnergy,FirstEnergy Political Action Comm,,Scot C Heckert,House of Delegates,13,Republican,2026 Election,2026-01-12,500.00
 2024,AEP,Alan D. Bragg,AEP,West Virginians for Manufacturing Jobs PAC,,,,2018 Election,2024-04-25,482.06
+2026,FirstEnergy,FirstEnergy Political Action Committee,,Charles Horst,Undeclared,95,Republican,2026 Election,2026-06-02,300.00
 2024,Dominion,JOSEPH WOOMER,DOMINION ENERGY,Patrick Morrisey,Attorney General,,Republican,2012 Election,2024-10-16,260.73
 2024,AEP,American Electric Power,,Charles R. Sheedy,House of Delegates,7,Republican,2024 Election,2024-10-01,250.00
 2024,AEP,American Electric Power Committee for Responsible Government,,Michael F. Devault,House of Delegates,74,Republican,2024 Election,2024-04-02,250.00
@@ -287,16 +310,16 @@ Year,Company,Donor,Employer,Recipient,OfficeSought,District,Party,Election,Date,
 2024,AEP,American Electric Power Committee for Responsible Government,,James (Bill) William Flanigan,House of Delegates,4,Republican,2024 Election,2024-05-13,250.00
 2024,FirstEnergy,First Energy PAC,,John Williams,House of Delegates,80,Democrat,2024 Election,2024-09-24,250.00
 2024,FirstEnergy,FirstEnergy Political Action Committee,,Bryan Smith,House of Delegates,73,Republican,2024 Election,2024-12-10,250.00
-2024,AEP,American Electric Power,,Don Forsht,House of Delegates,91,Republican,2022 Election,2024-04-12,250.00
 2024,AEP,American Electric Power,,D.R. Buck Jennings,House of Delegates,84,Republican,2024 Election,2024-04-04,250.00
-2024,AEP,Appalachian Power,,Charles R. Sheedy,House of Delegates,7,Republican,2024 Election,2024-05-08,250.00
 2024,AEP,American Electric Power,,James Willis,House of Delegates,3,Republican,2024 Election,2024-09-24,250.00
-2024,AEP,American Electric Power,,Don Forsht,House of Delegates,91,Republican,2024 Election,2024-04-12,250.00
+2024,AEP,American Electric Power,,Don Forsht,House of Delegates,91,Republican,2022 Election,2024-04-12,250.00
+2024,AEP,Appalachian Power,,Charles R. Sheedy,House of Delegates,7,Republican,2024 Election,2024-05-08,250.00
 2024,AEP,American Electric Power,,S. David Green,House of Delegates,36,Republican,2024 Election,2024-10-01,250.00
+2024,AEP,American Electric Power,,Don Forsht,House of Delegates,91,Republican,2024 Election,2024-04-12,250.00
 2024,FirstEnergy,First Energy PAC,,Joseph David Garcia,State Senator,13,Democrat,2024 Election,2024-09-24,250.00
+2024,Dominion,BRANDON ELDER STITES,DOMINION ENERGY,Patrick Morrisey,Attorney General,,Republican,2012 Election,2024-10-16,250.00
 2024,AEP,AEP,,Roy G. Cooper,House of Delegates,40,Republican,2024 Election,2024-03-14,250.00
 2024,AEP,American Electric Power,,Marshall W. Clay,House of Delegates,51,Republican,2024 Election,2024-04-17,250.00
-2024,Dominion,BRANDON ELDER STITES,DOMINION ENERGY,Patrick Morrisey,Attorney General,,Republican,2012 Election,2024-10-16,250.00
 2024,AEP,American Electric Power Committee for Responsible Government,,Michael E. DeVault,House of Delegates,74,Republican,2022 Election,2024-04-02,250.00
 2024,AEP,American Electric Power,,James Willis,House of Delegates,3,Republican,2024 Election,2024-04-10,250.00
 2024,AEP,Appalachian Power,,Jeff Campbell,House of Delegates,46,Republican,2024 Election,2024-04-18,250.00
@@ -318,30 +341,39 @@ Year,Company,Donor,Employer,Recipient,OfficeSought,District,Party,Election,Date,
 2024,AEP,American Electric Power,,Joe Funkhouser,House of Delegates,98,Republican,2024 Election,2024-05-23,250.00
 2024,AEP,American Electric Power,,Philip Wayne Mallow,House of Delegates,75,Republican,2024 Election,2024-09-13,250.00
 2025,Dominion,Dominion Energy,,Patrick Lucas,House of Delegates,24,Republican,2024 Election,2025-11-26,250.00
-2025,AEP,AEP,,Roy Cooper,,,,,2025-10-01,250.00
-2025,Dominion,Dominion Energy Inc,,Scot C Heckert,,,,,2025-11-01,250.00
-2025,AEP,American Electric Power Committee For Responsible Government,,Jeffrey Ryan Stephens,,,,,2025-11-03,250.00
-2025,AEP,American Electric Power,,Michael Hite,,,,,2025-12-01,250.00
-2025,Dominion,Dominion Energy Inc. PAC,,Sarah Elizabeth Drennan,,,,,2025-10-29,250.00
-2025,Dominion,Dominion Energy Inc PAC - Dominion PAC,,Kathie Hess Crouse,,,,,2025-10-26,250.00
-2025,Dominion,Dominion Energy PAC,,Andy Shamblin,,,,,2025-10-25,250.00
+2025,AEP,AEP,,Roy Cooper,House of Delegates,40,Republican,2026 Election,2025-10-01,250.00
+2025,Dominion,Dominion Energy Inc,,Scot C Heckert,House of Delegates,13,Republican,2026 Election,2025-11-01,250.00
+2025,AEP,American Electric Power Committee For Responsible Government,,Jeffrey Ryan Stephens,House of Delegates,6,Republican,2026 Election,2025-11-03,250.00
+2025,AEP,American Electric Power,,Michael Hite,House of Delegates,92,Republican,2026 Election,2025-12-01,250.00
+2025,Dominion,Dominion Energy Inc. PAC,,Sarah Elizabeth Drennan,House of Delegates,20,Republican,2026 Election,2025-10-29,250.00
+2025,Dominion,Dominion Energy Inc PAC - Dominion PAC,,Kathie Hess Crouse,House of Delegates,19,Republican,2026 Election,2025-10-26,250.00
+2025,Dominion,Dominion Energy PAC,,Andy Shamblin,House of Delegates,59,Republican,2026 Election,2025-10-25,250.00
+2026,Dominion,Dominion Energy Inc. PAC- Dominion PAC,,Samuel Lusk,House of Delegates,39,Republican,2026 Election,2026-04-27,250.00
 2026,FirstEnergy,First Energy PAC,,Trenton Carl Barnhart,State Senator,3,Republican,2026 Election,2026-01-09,250.00
-2026,Dominion,Dominion Energy Inc. PAC,,Tristan Leavitt,,,,,2026-01-01,250.00
-2026,Dominion,Dominion Energy Inc,,Scot C Heckert,,,,,2026-04-07,250.00
-2026,AEP,American Electric Power Committee for Responsible Government,,Carl Bill Roop,,,,,2026-04-13,250.00
-2026,FirstEnergy,FirstEnergy Political Action Committee,,Laura Kimble,,,,,2026-01-02,250.00
+2026,Dominion,Dominion Energy Inc PAC,,Lori Dittman,House of Delegates,63,Republican,2026 Election,2026-04-27,250.00
+2026,Dominion,Dominion Energy Inc. PAC,,Tristan Leavitt,House of Delegates,53,Republican,2026 Election,2026-01-01,250.00
+2026,Dominion,Dominion Energy Inc Political Action Dominion PAC,,Keith Ward Marple,House of Delegates,69,Republican,2026 Election,2026-04-27,250.00
+2026,AEP,American Electric Power Committee for Responsible Government,,Carl Bill Roop,House of Delegates,44,Republican,2026 Election,2026-04-13,250.00
+2026,FirstEnergy,FirstEnergy Political Action Committee,,Laura Kimble,House of Delegates,71,Republican,2026 Election,2026-01-02,250.00
+2026,FirstEnergy,FirstEnergy Political Action Committee,,Chris Phillips,House of Delegates,68,Republican,2026 Election,2026-05-19,250.00
 2026,AEP,American Electric Power,,Marshall W. Clay,House of Delegates,51,Republican,2024 Election,2026-01-07,250.00
-2026,AEP,AMERICAN ELECTRIC POWER,,Keith Ward Marple,,,,,2026-04-09,250.00
+2026,AEP,AMERICAN ELECTRIC POWER,,Keith Ward Marple,House of Delegates,69,Republican,2026 Election,2026-04-09,250.00
+2026,Dominion,Dominion Energy Inc.PAC,,Jeff Campbell,House of Delegates,46,Republican,2026 Election,2026-04-30,250.00
+2026,AEP,American Electric Power,,Jon Dodds,House of Delegates,76,Republican,2026 Election,2026-05-02,250.00
+2026,AEP,American Electric Power,,Michael Hite,House of Delegates,92,Republican,2026 Election,2026-04-14,250.00
 2026,Dominion,Dominion Energy,,George Miller,House of Delegates,90,Republican,2026 Election,2026-05-18,250.00
-2026,AEP,American Electric Power,,Michael Hite,,,,,2026-04-14,250.00
-2026,AEP,American Electric Power,,Jeff Campbell,,,,,2026-04-08,250.00
+2026,AEP,American Electric Power,,Jeff Campbell,House of Delegates,46,Republican,2026 Election,2026-04-08,250.00
 2026,AEP,American Electric Power,,Kerry G Murphy,House of Delegates,9,Republican,2026 Election,2026-04-13,250.00
 2026,AEP,American Electric Power,,Franklin Porter Sturm,House of Delegates,73,Republican,2026 Election,2026-04-10,250.00
-2026,AEP,American Electric Power Committee for Responsible Government,,Denny Ray Canterbury,,,,,2026-04-20,250.00
-2026,AEP,American Electric Power,,Richard D Jones,,,,,2026-04-09,250.00
+2026,Dominion,Dominion Energy Inc,,Scot C Heckert,House of Delegates,13,Republican,2026 Election,2026-04-07,250.00
+2026,Dominion,DOMINION ENERGY,,Roy Cooper,House of Delegates,40,Republican,2026 Election,2026-04-27,250.00
+2026,AEP,American Electric Power Committee for Responsible Government,,Denny Ray Canterbury,House of Delegates,47,Republican,2026 Election,2026-04-20,250.00
+2026,AEP,American Electric Power,,Richard D Jones,House of Delegates,42,Republican,2026 Election,2026-04-09,250.00
+2026,Dominion,Dominion Energy Inc Political Action Committee,,"Warren ""Dean"" Jeffries",House of Delegates,61,Republican,2026 Election,2026-05-03,250.00
 2024,FirstEnergy,Chris Rose,First Energy,S. Chris Anders,House of Delegates,97,Republican,2024 Election,2024-10-21,200.00
 2025,FirstEnergy,GARY JACK,MON POWER,West Virginia Wins Inaugural Committee Inc.,,,,2018 Election,2025-01-07,200.00
-2026,FirstEnergy,First Energy Political Action Committee,,Mark Peter Zatezalo,,,,,2026-01-09,200.00
+2026,FirstEnergy,First Energy Political Action Committee,,Denny Ray Canterbury,House of Delegates,47,Republican,2026 Election,2026-06-30,200.00
+2026,FirstEnergy,First Energy Political Action Committee,,Mark Peter Zatezalo,House of Delegates,2,Republican,2026 Election,2026-01-09,200.00
 2024,AEP,Sammy L. Gray,Appalachian Power,Anita Harold Ashley,"Circuit Court Judge, Circuit 05",3,Non Partisan,2024 Election,2024-05-02,150.00
 2025,FirstEnergy,First Energy Corp,,Marion Co Democratic Executive Committee,,,,2018 Election,2025-01-17,148.73
 2024,FirstEnergy,Gary Jack,Mon Power,Kristian Esgridge Warner,Secretary of State,,Republican,2024 Election,2024-05-03,144.09
@@ -350,15 +382,16 @@ Year,Company,Donor,Employer,Recipient,OfficeSought,District,Party,Election,Date,
 2024,AEP,Appalachian Power,,Amy Nicole Grady,State Senator,5,Republican,2024 Election,2024-10-10,100.00
 2024,Dominion,ROBERT GARDNER,DOMINION ENERGY,Patrick Morrisey,Governor,,Republican,2024 Election,2024-10-16,100.00
 2024,FirstEnergy,Alex Lepp,Firstenergy,William 'Bil' Kerry Lepp,State Senator,17,Democrat,2024 Election,2024-09-10,75.00
+2026,FirstEnergy,FirstEnergy PAC,,Michael Hite,House of Delegates,92,Republican,2026 Election,2026-06-08,50.00
 2024,Dominion,JAMES BEAMER,DOMINION ENERGY,Patrick Morrisey,Governor,,Republican,2024 Election,2024-10-10,41.98
 2024,AEP,BRETT WATTS,AEP,Patrick Morrisey,Governor,,Republican,2024 Election,2024-02-22,24.75
 2025,FirstEnergy,North Lane Technologies Inc (First Energy),,Harrison Co. Republican Executive Committee,,,,2018 Election,2025-02-19,24.03
 2024,AEP,Ron Brown,AEP,Kayla Young,House of Delegates,56,Democrat,2024 Election,2024-08-03,10.00
 2024,AEP,Ron Brown,AEP,Kayla Young,House of Delegates,56,Democrat,2024 Election,2024-07-03,10.00
-2024,AEP,Ron Brown,AEP,Kayla Young,House of Delegates,56,Democrat,2024 Election,2024-10-03,10.00
 2024,AEP,Ron Brown,AEP,Kayla Young,House of Delegates,56,Democrat,2024 Election,2024-05-03,10.00
-2024,AEP,Ron Brown,AEP,Kayla Young,House of Delegates,56,Democrat,2024 Election,2024-04-03,10.00
+2024,AEP,Ron Brown,AEP,Kayla Young,House of Delegates,56,Democrat,2024 Election,2024-10-03,10.00
 2024,AEP,Ron Brown,AEP,Kayla Young,House of Delegates,56,Democrat,2024 Election,2024-06-03,10.00
+2024,AEP,Ron Brown,AEP,Kayla Young,House of Delegates,56,Democrat,2024 Election,2024-04-03,10.00
 2024,AEP,Ron Brown,AEP,Kayla Young,House of Delegates,56,Democrat,2024 Election,2024-09-03,10.00
 2024,AEP,Ron Brown,AEP,Kayla Young,House of Delegates,56,Democrat,2024 Election,2024-03-03,10.00
 2024,AEP,Ron Brown,AEP,Kayla Young,House of Delegates,56,Democrat,2024 Election,2024-11-03,10.00
