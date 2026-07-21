@@ -235,9 +235,14 @@ function renderLegis() {
     if (q && !(l.name + ' ' + l.chamber + ' ' + l.district + ' ' + l.counties.join(' ')).toUpperCase().includes(q)) return false;
     return true;
   });
-  if (sf === 'money') rows.sort((a, b) => b.total - a.total);
-  else if (sf === 'name') rows.sort((a, b) => a.name.localeCompare(b.name));
-  else rows.sort((a, b) => (a.chamber !== 'Senate') - (b.chamber !== 'Senate') || a.district - b.district || a.name.localeCompare(b.name));
+  // legislators with a known position (a comment on record) always float to the top;
+  // "unknown" sinks to the bottom, then the chosen sort applies within each group
+  const known = l => ((POSITION[l.key] || {}).stance || 'unknown') !== 'unknown' ? 0 : 1;
+  let within;
+  if (sf === 'money') within = (a, b) => b.total - a.total;
+  else if (sf === 'name') within = (a, b) => a.name.localeCompare(b.name);
+  else within = (a, b) => (a.chamber !== 'Senate') - (b.chamber !== 'Senate') || a.district - b.district || a.name.localeCompare(b.name);
+  rows.sort((a, b) => (known(a) - known(b)) || within(a, b));
   document.getElementById('lcount').textContent = rows.length + ' legislators'
     + (cf ? ' representing ' + cf + ' County' : '');
   document.getElementById('ltb').innerHTML = rows.map(l => {
