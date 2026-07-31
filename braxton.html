@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Valley North Transmission Line — Braxton County Property Map</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -74,6 +74,48 @@
   }
   #about button:hover { background: #27548a; }
   .leaflet-popup-content { margin: 12px 16px; }
+
+  /* --- mobile --- */
+  .legend-head { cursor: pointer; user-select: none; display: flex; align-items: center;
+    justify-content: space-between; gap: 12px; font-weight: 700; }
+  .legend-tog { font-size: 10px; opacity: .6; transition: transform .18s ease; }
+  /* default state is CSS-driven (never depends on JS reading a width at load
+     time, which can be 0 while the page is still laying out).
+     desktop = open unless the user closed it; phones = closed unless opened. */
+  .legend.user-closed .legend-body { display: none; }
+  .legend.user-closed .legend-tog { transform: rotate(-90deg); }
+  @media (max-width: 760px) {
+    .legend:not(.user-open) .legend-body { display: none; }
+    .legend:not(.user-open) .legend-tog { transform: rotate(-90deg); }
+  }
+  .legend { max-width: 62vw; }
+  @media (max-width: 760px) {
+    .nomob { display: none; }
+    /* two rows: title + button, then a full-width search field */
+    header { height: 94px; flex-wrap: wrap; align-content: center; gap: 6px 8px; padding: 6px 8px; }
+    header > div:first-child { flex: 1 1 auto; min-width: 0; }
+    header h1 { font-size: 13px; line-height: 1.25; white-space: normal;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    header .sub { display: none; }
+    a.hbtn { padding: 8px 10px; font-size: 11px; flex: 0 0 auto; }
+    #searchBox { flex: 0 0 100%; order: 3; margin-left: 0; gap: 6px; }
+    #searchBox input { width: auto; flex: 1 1 auto; min-width: 0; max-width: none;
+      padding: 9px 10px; font-size: 16px; }   /* 16px stops iOS zoom-on-focus */
+    #searchBox button { padding: 9px 14px; flex: 0 0 auto; }
+    #map { top: 94px; }
+    #zoomHint { top: 104px; font-size: 12px; padding: 5px 10px; max-width: 92vw; text-align: center; }
+    #results { top: 104px; left: 8px; right: 8px; width: auto; max-width: none; max-height: 52vh;
+      z-index: 1200; }   /* above Leaflet's zoom/layer controls so ✕ stays tappable */
+    #results .rhead { padding: 11px 12px; font-size: 14px; }
+    #results .rhead span.close { font-size: 20px; line-height: 1; padding: 0 8px; color: #444; }
+    #results .item { padding: 11px 12px; }
+    .legend { font-size: 11px; line-height: 17px; padding: 7px 9px; max-width: 70vw; }
+    .leaflet-control-layers-toggle { width: 40px !important; height: 40px !important;
+      background-size: 24px 24px !important; }
+    footer.credit { font-size: 9.5px; line-height: 1.35; max-width: 100vw; bottom: 15px;
+      padding: 2px 6px; background: rgba(255,255,255,.92); }
+    .leaflet-popup-content { margin: 10px 12px; font-size: 13px; }
+  }
 </style>
 </head>
 <body>
@@ -91,7 +133,7 @@
 <div id="map"></div>
 <div id="zoomHint">Zoom in to see property lines &amp; click parcels for owner info</div>
 <div id="results"><div class="rhead">Results <span class="close" onclick="hideResults()">✕</span></div><div id="rlist"></div></div>
-<footer class="credit">Unofficial community map &nbsp;•&nbsp; Route data as of July 6, 2026 · verified July 18, 2026 &nbsp;•&nbsp; <a href="#" onclick="document.getElementById('about').style.display='flex';return false">ⓘ About this map &amp; data sources</a> &nbsp;•&nbsp; <a href="counties.html">All counties</a> &nbsp;•&nbsp; <a href="__DONPAGE__">Developer donations</a> &nbsp;•&nbsp; <a href="about.html">About</a></footer>
+<footer class="credit">Unofficial community map &nbsp;•&nbsp; <span class="nomob">Route data as of July 6, 2026 · verified July 18, 2026 &nbsp;•&nbsp; </span><a href="#" onclick="document.getElementById('about').style.display='flex';return false">ⓘ About this map &amp; data sources</a> &nbsp;•&nbsp; <a href="counties.html">All counties</a> &nbsp;•&nbsp; <a href="__DONPAGE__">Developer donations</a> &nbsp;•&nbsp; <a href="about.html">About</a></footer>
 
 <div id="about">
   <div class="abox">
@@ -187,7 +229,7 @@ const layersCtl = L.control.layers(
     'Right-of-way corridor': rowCorridor,
     'Substations': subs,
     'Braxton County line': studyArea },
-  { collapsed: window.innerWidth < 700 }
+  { collapsed: window.innerWidth < 760 }
 ).addTo(map);
 
 // --- Legend ---
@@ -203,6 +245,18 @@ legend.onAdd = function () {
     + '<span class="k" style="background:none;border:1px solid #888;height:8px"></span>Parcel lines (zoom in)<br>'
     + '<span class="k" style="background:#c40000;width:9px;height:9px;border-radius:50%"></span>Affected parcel (if layer on)<br>'
     + '<span class="k" style="background:#ff8c00;width:9px;height:9px;border-radius:50%"></span>Affected, corridor only';
+  // collapsible legend (users could not close it on phones)
+  const _html = d.innerHTML, _cut = _html.indexOf('<br>');
+  const _head = _cut > -1 ? _html.slice(0, _cut) : 'Legend';
+  const _body = _cut > -1 ? _html.slice(_cut + 4) : _html;
+  d.innerHTML = '<div class="legend-head">' + _head
+    + '<span class="legend-tog">\u25bc</span></div><div class="legend-body">' + _body + '</div>';
+  L.DomEvent.disableClickPropagation(d);
+  L.DomEvent.on(d.querySelector('.legend-head'), 'click', function () {
+    var open = d.querySelector('.legend-body').offsetHeight > 0;
+    d.classList.toggle('user-closed', open);
+    d.classList.toggle('user-open', !open);
+  });
   return d;
 };
 legend.addTo(map);
