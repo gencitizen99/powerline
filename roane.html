@@ -133,13 +133,14 @@
 <div id="map"></div>
 <div id="zoomHint">Zoom in to see property lines &amp; click parcels for owner info</div>
 <div id="results"><div class="rhead">Results <span class="close" onclick="hideResults()">✕</span></div><div id="rlist"></div></div>
-<footer class="credit">Unofficial community map &nbsp;•&nbsp; <span class="nomob">Route data as of July 6, 2026 · verified July 18, 2026 &nbsp;•&nbsp; </span><a href="#" onclick="document.getElementById('about').style.display='flex';return false">ⓘ About this map &amp; data sources</a> &nbsp;•&nbsp; <a href="counties.html">All counties</a> &nbsp;•&nbsp; <a href="__DONPAGE__">Developer donations</a> &nbsp;•&nbsp; <a href="about.html">About</a></footer>
+<footer class="credit">Unofficial community map &nbsp;•&nbsp; <span class="nomob">Route data as of July 6, 2026 · verified July 18, 2026 &nbsp;•&nbsp; </span><a href="#" onclick="document.getElementById('about').style.display='flex';return false">ⓘ About this map &amp; data sources</a> &nbsp;•&nbsp; <a href="counties.html">All counties</a> &nbsp;•&nbsp; <a href="opposition.html">Opposition tracker</a> &nbsp;•&nbsp; <a href="__DONPAGE__">Developer donations</a> &nbsp;•&nbsp; <a href="about.html">About</a></footer>
 
 <div id="about">
   <div class="abox">
     <h2>About this map</h2>
     <p><b>This is an unofficial map made by a community member.</b> It is not affiliated with, endorsed by, or produced by Valley Link Transmission LLC, the Valley North project, PJM, or any government agency.</p>
     <div class="warn"><b>The proposed routes shown here are preliminary and subject to change.</b> For the latest official information, visit the project website: <a href="https://vltransmission.com/valley-north/" target="_blank" rel="noopener">vltransmission.com/valley-north</a></div>
+    <div style="background:#e8f4ea;border-left:4px solid #2f8f46;padding:8px 10px;margin:10px 0;font-size:13px"><b>Updated July 2026:</b> this map now works better on phones &mdash; the legend opens and closes with a tap, and the search box sits on its own row. If it still looks like the old version, pull down to refresh or reopen the page.</div>
     <ul>
       <li><b>Proposed route, corridor &amp; substations:</b> map data published by the developer at vltransmission.com, downloaded <b>July 6, 2026 · verified July 18, 2026</b>.</li>
       <li><b>Legislative districts (optional overlay):</b> WV Legislature 2021 redistricting boundaries via the WVU GIS Tech Center; contribution totals from public campaign-finance filings (cfrs.wvsos.gov) — see the <a href="__DONPAGE__">Developer donations</a> page.</li>
@@ -195,7 +196,7 @@ parcels.bindPopup(function (error, fc) {
     + ' &nbsp;Parcel ' + esc(p.Parcel) + (p.Suffix && p.Suffix !== 'Null' ? '.' + esc(p.Suffix) : '')
     + ' &nbsp;•&nbsp; ' + (p.Acres_c || p.Acres_C ? (+(p.Acres_c || p.Acres_C)).toFixed(1) + ' ac (GIS)' : '')
     + '<div class="lbl">Legal description</div>' + esc(p.FullLegalDescription)
-    + (pid ? '<div style="margin-top:8px"><a href="https://mapwv.gov/parcel/?pid=' + encodeURIComponent(pid)
+    + (pid ? '<div style="margin-top:8px"><a href="https://mapwv.gov/parcel/?cleanpid=' + encodeURIComponent(pid)
       + '" target="_blank">Open in WV Property Viewer →</a></div>' : '')
     + '</div>';
 }, { minWidth: 240 });
@@ -398,7 +399,7 @@ function doSearch() {
           lyr.bindPopup('<div class="popup-parcel"><h3>' + escTxt(f.properties.FullOwnerName || '—') + '</h3>'
             + escTxt(f.properties.FullPhysicalAddress || '')
             + '<div style="font-size:12.5px">' + districtLines(c.lat, c.lng) + '</div>'
-            + (pid ? '<div style="margin-top:6px"><a href="https://mapwv.gov/parcel/?pid=' + encodeURIComponent(pid) + '" target="_blank" rel="noopener">Official parcel record →</a></div>' : '')
+            + (pid ? '<div style="margin-top:6px"><a href="https://mapwv.gov/parcel/?cleanpid=' + encodeURIComponent(pid) + '" target="_blank" rel="noopener">Official parcel record →</a></div>' : '')
             + '</div>', { minWidth: 240 }).openPopup();
         };
         secP.appendChild(div);
@@ -423,7 +424,7 @@ DATA_IMPACT.forEach(function (d) {
     + cac.toFixed(1) + ' of ' + pac.toFixed(1) + ' ac in corridor (' + pct.toFixed(0) + '%)'
     + (clft > 0 ? '<br>Centerline crosses: ' + Math.round(clft).toLocaleString() + ' ft' : '')
     + '<div style="font-size:11px;color:#888;margin-top:6px">Estimate from GIS overlay — routes are preliminary. Not all studied segments will be built.</div>'
-    + (pid ? '<div style="margin-top:6px"><a href="https://mapwv.gov/parcel/?pid=' + encodeURIComponent(pid) + '" target="_blank">Official parcel record →</a></div>' : '')
+    + (pid ? '<div style="margin-top:6px"><a href="https://mapwv.gov/parcel/?cleanpid=' + encodeURIComponent(pid) + '" target="_blank">Official parcel record →</a></div>' : '')
     + '</div>', { minWidth: 230 });
   impactLayer.addLayer(m);
 });

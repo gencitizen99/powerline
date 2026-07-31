@@ -37,7 +37,7 @@
 <body>
 <header>
   <h1>Lewis County property impact estimates — Valley North</h1>
-  <div class="sub">Unofficial community analysis &nbsp;•&nbsp; <a href="index.html">← Back to the interactive map</a> &nbsp;•&nbsp; <a href="counties.html">All counties</a> &nbsp;•&nbsp; <a href="donations.html">Developer donations</a> &nbsp;•&nbsp; <a href="about.html">About</a></div>
+  <div class="sub">Unofficial community analysis &nbsp;•&nbsp; <a href="index.html">← Back to the interactive map</a> &nbsp;•&nbsp; <a href="counties.html">All counties</a> &nbsp;•&nbsp; <a href="donations.html">Developer donations</a> &nbsp;•&nbsp; <a href="opposition.html">Opposition tracker</a> &nbsp;•&nbsp; <a href="about.html">About</a></div>
 </header>
 <div class="wrap">
   <div class="warn"><b>Read this first:</b> these are <b>estimates</b> from overlaying county GIS parcel lines with <b>all route options currently being studied</b> for the proposed Valley North transmission line. The final route will use only some of these segments — many properties listed here may end up untouched, and routes are preliminary and subject to change. This page is not affiliated with Valley Link Transmission or any government agency. Official information: <a href="https://vltransmission.com/valley-north/" target="_blank" rel="noopener">vltransmission.com/valley-north</a>. Parcel data: <a href="https://mapwv.gov/parcel/" target="_blank" rel="noopener">mapwv.gov</a> (assessor GIS mapping, not surveys). Route data as of <b>July 6, 2026</b>.</div>
@@ -82,7 +82,7 @@ function render() {
     + '</div><div class="adr">' + esc(d[1]) + (d[7] ? ' — Dist ' + esc(d[7]) : '') + '</div></td>'
     + '<td class="num">' + d[2].toFixed(1) + '</td><td class="num"><b>' + d[3].toFixed(1) + '</b></td>'
     + '<td class="num">' + d[4].toFixed(0) + '%</td><td class="num hidemob">' + (d[5] ? d[5].toLocaleString() : '—') + '</td>'
-    + '<td class="hidemob">' + (d[6] ? '<a href="https://mapwv.gov/parcel/?pid=' + encodeURIComponent(d[6]) + '" target="_blank" rel="noopener">view</a>' : '') + '</td></tr>').join('');
+    + '<td class="hidemob">' + (d[6] ? '<a href="https://mapwv.gov/parcel/?cleanpid=' + encodeURIComponent(d[6]) + '" target="_blank" rel="noopener">view</a>' : '') + '</td></tr>').join('');
 }
 q.addEventListener('input', render); sortSel.addEventListener('change', render);
 render();

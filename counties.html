@@ -231,7 +231,7 @@ function render() {
     + '<td class="num"><b>' + r[4].toLocaleString() + '</b></td>'
     + '<td class="num hidemob">' + r[5] + '%</td>'
     + '<td class="num hidemob">' + (r[6] > 0 ? r[6].toLocaleString() + ' ft' : '—') + '</td>'
-    + '<td class="num">' + (r[7] ? '<a href="https://mapwv.gov/parcel/?pid=' + encodeURIComponent(r[7]) + '" target="_blank" rel="noopener">view</a>' : '') + '</td></tr>').join('');
+    + '<td class="num">' + (r[7] ? '<a href="https://mapwv.gov/parcel/?cleanpid=' + encodeURIComponent(r[7]) + '" target="_blank" rel="noopener">view</a>' : '') + '</td></tr>').join('');
   document.getElementById('shownNote').textContent = rows.length > MAX_SHOW
     ? 'Showing the top ' + MAX_SHOW + ' of ' + rows.length.toLocaleString() + ' parcels — narrow by county or search, or download the CSV for everything.'
     : '';
