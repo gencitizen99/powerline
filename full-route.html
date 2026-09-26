@@ -49,8 +49,13 @@
   .popup-parcel a { color: #1a5ca8; }
   footer.credit {
     position: absolute; bottom: 0; left: 0; z-index: 900; background: rgba(255,255,255,.85);
-    font-size: 11px; padding: 3px 8px; color: #444; max-width: 70vw;
+    font-size: 11px; padding: 3px 8px; color: #444; max-width: 62vw;
   }
+  .pscline { font-size: 12px; line-height: 1.45; color: #123a66; background: #dce9f7;
+    border-left: 4px solid #1a5ca8; padding: 4px 8px; margin: -3px -8px 3px; }
+  .pscline a { color: #10467f; }
+  @media (max-width: 760px) { .pscline { font-size: 10.5px; padding: 3px 96px 3px 6px; margin: -2px -6px 2px; } }
+
   footer.credit a { color: #1a5ca8; font-weight: 600; }
   #about {
     position: absolute; inset: 0; z-index: 2000; background: rgba(20,30,40,.55);
@@ -129,7 +134,7 @@
 <div id="map"></div>
 <div id="zoomHint">Zoom in to see property lines &amp; click parcels for owner info</div>
 <div id="results"><div class="rhead">Results <span class="close" onclick="hideResults()">✕</span></div><div id="rlist"></div></div>
-<footer class="credit">Unofficial community map &nbsp;•&nbsp; <span class="nomob">Route data July 6, 2026 · verified July 18, 2026 &nbsp;•&nbsp; </span><a href="#" onclick="document.getElementById('about').style.display='flex';return false">ⓘ About this map &amp; data sources</a> &nbsp;•&nbsp; <a href="counties.html">All counties</a> &nbsp;•&nbsp; <a href="opposition.html">Opposition tracker</a> &nbsp;•&nbsp; <a href="donations.html">Developer donations</a> &nbsp;•&nbsp; <a href="about.html">About</a></footer>
+<footer class="credit"><div class="pscline"><b>The WV Public Service Commission is taking public comments now</b> &mdash; Case No. FP Valley Link 26A<span class="nomob">, no deadline posted</span> &nbsp;<a href="https://www.psc.state.wv.us/scripts/onlinecomments/requestAuthorization.cfm" target="_blank" rel="noopener"><b>File a comment</b></a> &nbsp;&bull;&nbsp; <a href="https://www.psc.state.wv.us/scripts/WebDocket/tblCaseActivitiesList.cfm?CaseID=86704" target="_blank" rel="noopener">Read the docket</a></div>Unofficial community map &nbsp;•&nbsp; <span class="nomob">Route data July 6, 2026 · verified July 18, 2026 &nbsp;•&nbsp; </span><a href="#" onclick="document.getElementById('about').style.display='flex';return false">ⓘ About this map &amp; data sources</a> &nbsp;•&nbsp; <a href="counties.html">All counties</a> &nbsp;•&nbsp; <a href="opposition.html">Opposition tracker</a> &nbsp;•&nbsp; <a href="donations.html">Developer donations</a> &nbsp;•&nbsp; <a href="about.html">About</a></footer>
 
 <div id="about">
   <div class="abox">
