@@ -31,7 +31,18 @@
   .cnts { color: #555; font-size: 12px; }
   .count { font-size: 12px; color: #777; margin: 6px 2px; }
   footer { font-size: 11px; color: #666; padding: 16px 2px 30px; line-height: 1.6; }
-  @media (max-width: 640px) { .hidemob { display: none; } }
+  .elecmob { display: none; }
+  @media (max-width: 640px) {
+    .hidemob { display: none; }
+    th.elec, td.elec { display: none; }          /* the Nov column would force a sideways scroll */
+    .elecmob { display: block; margin-top: 5px; }
+    /* pre-existing: the 4-column counties table was ~424px wide and scrolled sideways on a 375px phone.
+       Trim the padding and type rather than forcing a fixed layout, which squeezed the status badge. */
+    table { font-size: 12px; }
+    th, td { padding: 7px 5px; }
+    th { font-size: 10px; letter-spacing: 0; }
+    .badge { font-size: 10px; padding: 2px 7px; }
+  }
 </style>
 </head>
 <body>
@@ -65,6 +76,13 @@
       <option value="unknown">Position unknown</option>
     </select>
     <select id="cf"><option value="">All counties</option><option value="Barbour">Barbour</option><option value="Berkeley">Berkeley</option><option value="Braxton">Braxton</option><option value="Calhoun">Calhoun</option><option value="Doddridge">Doddridge</option><option value="Gilmer">Gilmer</option><option value="Grant">Grant</option><option value="Hampshire">Hampshire</option><option value="Hardy">Hardy</option><option value="Harrison">Harrison</option><option value="Jackson">Jackson</option><option value="Jefferson">Jefferson</option><option value="Kanawha">Kanawha</option><option value="Lewis">Lewis</option><option value="Preston">Preston</option><option value="Putnam">Putnam</option><option value="Randolph">Randolph</option><option value="Roane">Roane</option><option value="Tucker">Tucker</option><option value="Upshur">Upshur</option></select>
+    <select id="ef">
+      <option value="">Re-election: all</option>
+      <option value="ballot">On the November ballot</option>
+      <option value="lost">Lost their primary</option>
+      <option value="retiring">Not seeking re-election</option>
+      <option value="not_up">Term runs to 2028</option>
+    </select>
     <select id="sf">
       <option value="cham">Sort: chamber &amp; district</option>
       <option value="money">Sort: most developer $</option>
@@ -73,12 +91,12 @@
   </div>
   <div class="count" id="lcount"></div>
   <table>
-    <thead><tr><th>Legislator</th><th class="hidemob">Represents (impacted counties)</th><th class="num">Developer $</th><th>Position</th></tr></thead>
+    <thead><tr><th>Legislator</th><th class="hidemob">Represents (impacted counties)</th><th class="num">Developer $</th><th>Position</th><th class="elec">Nov 3, 2026</th></tr></thead>
     <tbody id="ltb"></tbody>
   </table>
 
   <footer>
-    Legislators are matched to counties from the official 2021 redistricting boundaries; a district counts if it covers any part of an impacted county. Developer contributions are from public campaign-finance filings (see <a href="donations.html">Developer donations</a> for sources). Positions reflect public statements known to the maintainer as of the date noted — blank means not yet known, not neutral. Community information, not legal advice.
+    Legislators are matched to counties from the official 2021 redistricting boundaries; a district counts if it covers any part of an impacted county. Developer contributions are from public campaign-finance filings (see <a href="donations.html">Developer donations</a> for sources). Positions reflect public statements known to the maintainer as of the date noted — blank means not yet known, not neutral. <b>Nov 3, 2026</b> status comes from the official West Virginia Secretary of State returns for the May 2026 primary, plus minor-party and independent candidates registered with the state campaign-finance system (they do not appear in primary results, so that list may be incomplete — minor-party ballot access is certified separately by the Secretary of State). All 100 House seats are on the 2026 ballot; state Senate seats are staggered, so roughly half of senators are not up until 2028. Community information, not legal advice.
   </footer>
 </div>
 <script>
@@ -86,6 +104,10 @@
    THIS PAGE READS ITS STATUSES FROM A GOOGLE SHEET — update the sheet, not
    this file. Sheet: docs.google.com/spreadsheets/d/1B7qsupKNWZwGm1f9QGHeAA8nIMHxaNDymLKcOb1cOGo
      First tab (counties):     County | Status | Date | Note | Source
+     Second tab (legislators): Name | Represents | Developer $ | Position | Note | Source
+                               | Up in Nov 2026 (G) | November opponent (H) | Status note (I)
+       Columns are read BY POSITION, so never insert a column before G —
+       G/H/I are optional and only override the published election data when filled.
         Status: passed | drafting | discussed | none
      Tab "legislators":        Name | Stance | Note | Source
         Name exactly as shown in the table; Stance: opposed | supports | mixed | unknown
@@ -195,6 +217,20 @@ const PSTYLE = {
   supports: { color: '#d64545', label: 'Supports line' },
   unknown:  { color: '#c4c9d0', label: 'Unknown' }
 };
+
+// ---- November 3, 2026 general election ----
+// Built from the official WV SOS / Clarity May 2026 primary returns (election id 126209)
+// plus CFRS-registered minor-party and independent candidates, who never appear in primary
+// results. The primary is settled, so this is baked in; columns G/H of the legislators tab
+// in the tracking sheet override it if filled.
+const ESTYLE = {
+  ballot:   { color: '#1a5ca8', label: 'On the ballot' },
+  lost:     { color: '#d64545', label: 'Lost primary' },
+  retiring: { color: '#8a6d1a', label: 'Not running' },
+  not_up:   { color: '#c4c9d0', label: 'Not up till 2028' },
+  verify:   { color: '#c4c9d0', label: 'Unconfirmed' }
+};
+const ELECTION = {"Adam Burkhammer":{"n":"Unopposed in R primary","o":"Nathaniel Stansberry (C)","s":"ballot"},"Amy Grady":{"n":"Last Senate committee: 2024; this seat is not on the 2026 ballot","o":"","s":"not_up"},"Andy Shamblin":{"n":"Unopposed in R primary","o":"Howard 'Cookie' Claytor III (D)","s":"ballot"},"Anne B. Charnock":{"n":"Won R primary 3,787–2,887 (unexpired term)","o":"Richie Robb (D)","s":"ballot"},"Ben Queen":{"n":"Won R primary 3,729–3,109","o":"Lynette Murray (D)","s":"ballot"},"Bill Bell":{"n":"Lost R primary to Steven L. Smith, 947–1,240","o":"","s":"lost"},"Bill Hamilton":{"n":"Won R primary 3,509–2,317","o":"Kevin Leon Carpenter (D)","s":"ballot"},"Bill Ridenour":{"n":"Unopposed in R primary","o":"Jenny Thacker (D)","s":"ballot"},"Bryan Ward":{"n":"All 100 House seats are on the 2026 ballot; did not file for the primary","o":"","s":"retiring"},"Carl Martin":{"n":"Unopposed in R primary","o":"Mira Tanner-Hughes (D)","s":"ballot"},"Charles H. Clements":{"n":"Registered a 2026 committee then terminated it; did not appear on the primary ballot — seat is open","o":"","s":"retiring"},"Chris Phillips":{"n":"Won R primary 1,107–295","o":"None — unopposed","s":"ballot"},"Chris Rose":{"n":"Last Senate committee: 2024; this seat is not on the 2026 ballot","o":"","s":"not_up"},"Chuck Horst":{"n":"Unopposed in R primary","o":"Kara Waldeck (D); Daniel Walls (C)","s":"ballot"},"Clay Riley":{"n":"Won R primary 736–318","o":"None — unopposed","s":"ballot"},"D. Rolland Jennings":{"n":"All 100 House seats are on the 2026 ballot; did not file for the primary","o":"","s":"retiring"},"Dana Ferrell":{"n":"Unopposed in R primary","o":"Lynette Shaw (D)","s":"ballot"},"Darren Thorne":{"n":"Won R primary 4,209–2,703","o":"Elizabeth Ferris (D)","s":"ballot"},"David Cannon":{"n":"Unopposed in R primary","o":"J R Hepworth (D); Walter S Sr. Long (C)","s":"ballot"},"Dean Jeffries":{"n":"Won R primary 1,107–287","o":"Sue Crawford (D)","s":"ballot"},"Donald Lee Bennett":{"n":"All 100 House seats are on the 2026 ballot; did not file for the primary","o":"","s":"retiring"},"Elias Coop-Gonzalez":{"n":"All 100 House seats are on the 2026 ballot; did not file for the primary","o":"","s":"retiring"},"Eric Tarr":{"n":"Won R primary 3,449–2,788","o":"Zachary Abbott (D); Stephanie E Butcher (L)","s":"ballot"},"Erica Moore":{"n":"Unopposed in R primary","o":"Tye Ward (L)","s":"ballot"},"George Miller":{"n":"Won R primary 767–535","o":"Ashley Braner (D); Joshua Nuckolls (Mtn)","s":"ballot"},"George Street":{"n":"Unopposed in R primary","o":"None — unopposed","s":"ballot"},"Glenn Jeffries":{"n":"Last Senate committee: 2024; this seat is not on the 2026 ballot","o":"","s":"not_up"},"Hollis Lewis":{"n":"Unopposed in D primary","o":"None — unopposed","s":"ballot"},"Ian T. Masters":{"n":"All 100 House seats are on the 2026 ballot; did not file for the primary","o":"","s":"retiring"},"James Robert \"JB\" Akers II":{"n":"Unopposed in R primary","o":"Anthony Dasaro (D)","s":"ballot"},"Jarred Cannon":{"n":"All 100 House seats are on the 2026 ballot; did not file for the primary","o":"","s":"retiring"},"Jason Barrett":{"n":"Won R primary 3,509–2,047","o":"Travis L Bost (L)","s":"ballot"},"Jay Taylor":{"n":"Won R primary 4,207–3,843","o":"Jason Armentrout (D)","s":"ballot"},"Jim Butler":{"n":"Unopposed in R primary","o":"Jonathan Hersman (D)","s":"ballot"},"Joe Funkhouser":{"n":"Unopposed in R primary","o":"Marta Beck (D)","s":"ballot"},"Joe Parsons":{"n":"All 100 House seats are on the 2026 ballot; did not file for the primary","o":"","s":"retiring"},"John Paul Hott":{"n":"All 100 House seats are on the 2026 ballot; did not file for the primary","o":"","s":"retiring"},"Jonathan Kyle":{"n":"Unopposed in R primary","o":"Danielle M. Dougherty (D)","s":"ballot"},"Jonathan Pinson":{"n":"Won R primary 978–594","o":"Kathryn 'Kat' Weiland (D)","s":"ballot"},"Kathie Hess Crouse":{"n":"Unopposed in R primary","o":"Nolan Rose (D)","s":"ballot"},"Kayla Young":{"n":"Unopposed in D primary","o":"None — unopposed","s":"ballot"},"Keith Marple":{"n":"Lost R primary to Danny Hamrick, 544–572","o":"","s":"lost"},"Laura Kimble":{"n":"Lost R primary to Tim McNeely, 682–688","o":"","s":"lost"},"Lisa White":{"n":"All 100 House seats are on the 2026 ballot; did not file for the primary","o":"","s":"retiring"},"Lori Dittman":{"n":"Won R primary 992–332","o":"Kevin Westley Carpenter (D)","s":"ballot"},"Michael Hite":{"n":"Unopposed in R primary","o":"Brad Noll (D)","s":"ballot"},"Michael Hornby":{"n":"Unopposed in R primary","o":"Tara B McCoy (C)","s":"ballot"},"Mickey Petitto":{"n":"All 100 House seats are on the 2026 ballot; did not file for the primary","o":"","s":"retiring"},"Mike Pushkin":{"n":"Unopposed in D primary","o":"Tara Nicole Martinez (No Affil.)","s":"ballot"},"Patricia Rucker":{"n":"No 2026 primary filing and no clear term signal (last Senate committee 2022) — confirm with the SOS","o":"","s":"verify"},"Patrick Martin":{"n":"Last Senate committee: 2024; this seat is not on the 2026 ballot","o":"","s":"not_up"},"Randy E. Smith":{"n":"Last Senate committee: 2024; this seat is not on the 2026 ballot","o":"","s":"not_up"},"Rick Hillenbrand":{"n":"Unopposed in R primary","o":"Dorothy L. Kengla (D)","s":"ballot"},"Robbie Morris":{"n":"Last Senate committee: 2028; this seat is not on the 2026 ballot","o":"","s":"not_up"},"Roger Hanshaw":{"n":"Unopposed in R primary","o":"Samantha Tanner-Lester (D)","s":"ballot"},"Rupie Phillips":{"n":"Last Senate committee: 2028; this seat is not on the 2026 ballot","o":"","s":"not_up"},"S. Chris Anders":{"n":"Unopposed in R primary","o":"Lucia Valentine (D)","s":"ballot"},"Sarah Drennan":{"n":"Unopposed in R primary","o":"Tonya Patrick Shuler (D)","s":"ballot"},"T. Kevan Bartlett":{"n":"Lost R primary to Lance Wheeler, 1,908–2,095","o":"","s":"lost"},"Tom Takubo":{"n":"Won R primary 3,863–3,024","o":"Wes Holden (D)","s":"ballot"},"Tom Willis":{"n":"Last Senate committee: 2024; this seat is not on the 2026 ballot","o":"","s":"not_up"},"Tresa Howell":{"n":"Unopposed in R primary","o":"Joyce Brown (D); Michael Ray Sigmon (Mtn)","s":"ballot"},"Tristan Leavitt":{"n":"Won R primary 664–305","o":"Keena Mullins (D)","s":"ballot"},"Walter Hall":{"n":"Unopposed in R primary","o":"Marisa Jackson (D)","s":"ballot"},"Wayne Clark":{"n":"Won R primary 522–287","o":"Regina Dyer (D)","s":"ballot"},"Zack Maynard":{"n":"Unopposed in R primary","o":"Cindy Brake (D); Shawn M Legg (I)","s":"ballot"}};
 const LEGIS = [{"key":"Charles H. Clements","name":"Charles H. Clements","chamber":"Senate","district":2,"party":"R","total":0,"counties":["Doddridge"]},{"key":"Chris Rose","name":"Chris Rose","chamber":"Senate","district":2,"party":"R","total":1000.0,"counties":["Doddridge"]},{"key":"Amy Grady","name":"Amy Grady","chamber":"Senate","district":4,"party":"R","total":1100.0,"counties":["Jackson","Putnam"]},{"key":"Eric Tarr","name":"Eric Tarr","chamber":"Senate","district":4,"party":"R","total":4500.0,"counties":["Jackson","Putnam"]},{"key":"Rupie Phillips","name":"Rupie Phillips","chamber":"Senate","district":7,"party":"R","total":1000.0,"counties":["Kanawha"]},{"key":"Zack Maynard","name":"Zack Maynard","chamber":"Senate","district":7,"party":"R","total":1000.0,"counties":["Kanawha"]},{"key":"Glenn Jeffries","name":"Glenn Jeffries","chamber":"Senate","district":8,"party":"R","total":2000.0,"counties":["Jackson","Kanawha","Putnam","Roane"]},{"key":"T. Kevan Bartlett","name":"T. Kevan Bartlett","chamber":"Senate","district":8,"party":"R","total":0,"counties":["Jackson","Kanawha","Putnam","Roane"]},{"key":"Bill Hamilton","name":"Bill Hamilton","chamber":"Senate","district":11,"party":"R","total":2500.0,"counties":["Barbour","Braxton","Randolph","Upshur"]},{"key":"Robbie Morris","name":"Robbie Morris","chamber":"Senate","district":11,"party":"R","total":2000.0,"counties":["Barbour","Braxton","Randolph","Upshur"]},{"key":"Ben Queen","name":"Ben Queen","chamber":"Senate","district":12,"party":"R","total":8800.0,"counties":["Calhoun","Gilmer","Harrison","Lewis"]},{"key":"Patrick Martin","name":"Patrick Martin","chamber":"Senate","district":12,"party":"R","total":500.0,"counties":["Calhoun","Gilmer","Harrison","Lewis"]},{"key":"Jay Taylor","name":"Jay Taylor","chamber":"Senate","district":14,"party":"R","total":0,"counties":["Grant","Hardy","Preston","Tucker"]},{"key":"Randy E. Smith","name":"Randy E. Smith","chamber":"Senate","district":14,"party":"R","total":10100.0,"counties":["Grant","Hardy","Preston","Tucker"]},{"key":"Darren Thorne","name":"Darren Thorne","chamber":"Senate","district":15,"party":"R","total":2800.0,"counties":["Berkeley","Hampshire"]},{"key":"Tom Willis","name":"Tom Willis","chamber":"Senate","district":15,"party":"R","total":1000.0,"counties":["Berkeley","Hampshire"]},{"key":"Jason Barrett","name":"Jason Barrett","chamber":"Senate","district":16,"party":"R","total":5500.0,"counties":["Berkeley","Jefferson"]},{"key":"Patricia Rucker","name":"Patricia Rucker","chamber":"Senate","district":16,"party":"R","total":2000.0,"counties":["Berkeley","Jefferson"]},{"key":"Anne B. Charnock","name":"Anne B. Charnock","chamber":"Senate","district":17,"party":"R","total":0,"counties":["Kanawha"]},{"key":"Tom Takubo","name":"Tom Takubo","chamber":"Senate","district":17,"party":"R","total":7600.0,"counties":["Kanawha"]},{"key":"Bill Bell","name":"Bill Bell","chamber":"House","district":8,"party":"R","total":0,"counties":["Doddridge"]},{"key":"Erica Moore","name":"Erica Moore","chamber":"House","district":15,"party":"R","total":500.0,"counties":["Roane"]},{"key":"Joe Parsons","name":"Joe Parsons","chamber":"House","district":16,"party":"R","total":2000.0,"counties":["Jackson"]},{"key":"Jonathan Pinson","name":"Jonathan Pinson","chamber":"House","district":17,"party":"R","total":1000.0,"counties":["Jackson"]},{"key":"Jim Butler","name":"Jim Butler","chamber":"House","district":18,"party":"R","total":500.0,"counties":["Putnam"]},{"key":"Kathie Hess Crouse","name":"Kathie Hess Crouse","chamber":"House","district":19,"party":"R","total":2750.0,"counties":["Putnam"]},{"key":"Sarah Drennan","name":"Sarah Drennan","chamber":"House","district":20,"party":"R","total":1250.0,"counties":["Putnam"]},{"key":"Jarred Cannon","name":"Jarred Cannon","chamber":"House","district":21,"party":"R","total":1500.0,"counties":["Putnam"]},{"key":"Tresa Howell","name":"Tresa Howell","chamber":"House","district":52,"party":"R","total":500.0,"counties":["Kanawha"]},{"key":"Tristan Leavitt","name":"Tristan Leavitt","chamber":"House","district":53,"party":"R","total":750.0,"counties":["Kanawha"]},{"key":"Mike Pushkin","name":"Mike Pushkin","chamber":"House","district":54,"party":"D","total":0,"counties":["Kanawha"]},{"key":"James Robert \"JB\" Akers II","name":"James Robert \"JB\" Akers II","chamber":"House","district":55,"party":"R","total":3500.0,"counties":["Kanawha"]},{"key":"Kayla Young","name":"Kayla Young","chamber":"House","district":56,"party":"D","total":1090.0,"counties":["Kanawha"]},{"key":"Hollis Lewis","name":"Hollis Lewis","chamber":"House","district":57,"party":"D","total":0,"counties":["Kanawha"]},{"key":"Walter Hall","name":"Walter Hall","chamber":"House","district":58,"party":"R","total":1000.0,"counties":["Kanawha"]},{"key":"Andy Shamblin","name":"Andy Shamblin","chamber":"House","district":59,"party":"R","total":1750.0,"counties":["Kanawha"]},{"key":"Dana Ferrell","name":"Dana Ferrell","chamber":"House","district":60,"party":"R","total":1000.0,"counties":["Kanawha"]},{"key":"Dean Jeffries","name":"Dean Jeffries","chamber":"House","district":61,"party":"R","total":1750.0,"counties":["Kanawha"]},{"key":"Roger Hanshaw","name":"Roger Hanshaw","chamber":"House","district":62,"party":"R","total":13200.0,"counties":["Calhoun","Gilmer"]},{"key":"Lori Dittman","name":"Lori Dittman","chamber":"House","district":63,"party":"R","total":1750.0,"counties":["Braxton","Gilmer"]},{"key":"Adam Burkhammer","name":"Adam Burkhammer","chamber":"House","district":64,"party":"R","total":500.0,"counties":["Lewis","Upshur"]},{"key":"Carl Martin","name":"Carl Martin","chamber":"House","district":65,"party":"R","total":0,"counties":["Upshur"]},{"key":"Jonathan Kyle","name":"Jonathan Kyle","chamber":"House","district":66,"party":"R","total":500.0,"counties":["Randolph"]},{"key":"Elias Coop-Gonzalez","name":"Elias Coop-Gonzalez","chamber":"House","district":67,"party":"R","total":0,"counties":["Randolph"]},{"key":"Chris Phillips","name":"Chris Phillips","chamber":"House","district":68,"party":"R","total":3750.0,"counties":["Barbour","Upshur"]},{"key":"Keith Marple","name":"Keith Marple","chamber":"House","district":69,"party":"R","total":500.0,"counties":["Harrison","Lewis"]},{"key":"Mickey Petitto","name":"Mickey Petitto","chamber":"House","district":70,"party":"R","total":0,"counties":["Harrison"]},{"key":"Laura Kimble","name":"Laura Kimble","chamber":"House","district":71,"party":"R","total":750.0,"counties":["Harrison"]},{"key":"Clay Riley","name":"Clay Riley","chamber":"House","district":72,"party":"R","total":3500.0,"counties":["Harrison"]},{"key":"George Street","name":"George Street","chamber":"House","district":83,"party":"R","total":2000.0,"counties":["Preston"]},{"key":"D. Rolland Jennings","name":"D. Rolland Jennings","chamber":"House","district":84,"party":"R","total":500.0,"counties":["Preston"]},{"key":"John Paul Hott","name":"John Paul Hott","chamber":"House","district":85,"party":"R","total":1000.0,"counties":["Grant","Tucker"]},{"key":"Bryan Ward","name":"Bryan Ward","chamber":"House","district":86,"party":"R","total":500.0,"counties":["Hardy"]},{"key":"Rick Hillenbrand","name":"Rick Hillenbrand","chamber":"House","district":88,"party":"R","total":1000.0,"counties":["Hampshire"]},{"key":"David Cannon","name":"David Cannon","chamber":"House","district":89,"party":"R","total":0,"counties":["Hampshire"]},{"key":"George Miller","name":"George Miller","chamber":"House","district":90,"party":"R","total":1000.0,"counties":["Berkeley"]},{"key":"Ian T. Masters","name":"Ian T. Masters","chamber":"House","district":91,"party":"R","total":0,"counties":["Berkeley"]},{"key":"Michael Hite","name":"Michael Hite","chamber":"House","district":92,"party":"R","total":1550.0,"counties":["Berkeley"]},{"key":"Michael Hornby","name":"Michael Hornby","chamber":"House","district":93,"party":"R","total":2000.0,"counties":["Berkeley"]},{"key":"Donald Lee Bennett","name":"Donald Lee Bennett","chamber":"House","district":94,"party":"R","total":0,"counties":["Berkeley"]},{"key":"Chuck Horst","name":"Chuck Horst","chamber":"House","district":95,"party":"R","total":300.0,"counties":["Berkeley"]},{"key":"Lisa White","name":"Lisa White","chamber":"House","district":96,"party":"R","total":0,"counties":["Berkeley"]},{"key":"S. Chris Anders","name":"S. Chris Anders","chamber":"House","district":97,"party":"R","total":300.0,"counties":["Berkeley","Jefferson"]},{"key":"Joe Funkhouser","name":"Joe Funkhouser","chamber":"House","district":98,"party":"R","total":750.0,"counties":["Jefferson"]},{"key":"Wayne Clark","name":"Wayne Clark","chamber":"House","district":99,"party":"R","total":1000.0,"counties":["Jefferson"]},{"key":"Bill Ridenour","name":"Bill Ridenour","chamber":"House","district":100,"party":"R","total":0,"counties":["Jefferson"]}];
 const esc = s => String(s || '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const fmt$ = n => '$' + Math.round(n).toLocaleString('en-US');
@@ -223,14 +259,27 @@ document.getElementById('ctb').innerHTML = cnames.map(n => {
 renderCounties();
 
 // legislators
+function elecCell(l) {
+  const e = ELECTION[l.name];
+  if (!e) return '<span style="color:#999">—</span>';
+  const st = ESTYLE[e.s] || ESTYLE.verify;
+  let h = badge(st, e.s === 'not_up' || e.s === 'verify');
+  const opp = (e.o || '').trim();
+  if (opp && !/^[-\u2013\u2014]+$/.test(opp)) h += '<div style="font-size:11px;color:#555;margin-top:3px">vs. ' + esc(opp) + '</div>';
+  if (e.n) h += '<div style="font-size:10.5px;color:#888;margin-top:2px">' + esc(e.n) + '</div>';
+  return h;
+}
+
 function renderLegis() {
   const q = document.getElementById('q').value.trim().toUpperCase();
   const pf = document.getElementById('pf').value;
   const cf = document.getElementById('cf').value;
   const sf = document.getElementById('sf').value;
+  const ef = document.getElementById('ef').value;
   let rows = LEGIS.filter(l => {
     const st = (POSITION[l.key] || {}).stance || 'unknown';
     if (pf && st !== pf) return false;
+    if (ef && ((ELECTION[l.name] || {}).s || '') !== ef) return false;
     if (cf && l.counties.indexOf(cf) < 0) return false;
     if (q && !(l.name + ' ' + l.chamber + ' ' + l.district + ' ' + l.counties.join(' ')).toUpperCase().includes(q)) return false;
     return true;
@@ -249,16 +298,18 @@ function renderLegis() {
     const p = POSITION[l.key] || {}; const st = PSTYLE[p.stance || 'unknown'];
     const pre = l.chamber === 'Senate' ? 'Sen.' : 'Del.';
     return '<tr><td><b>' + pre + ' ' + esc(l.name) + '</b> (' + l.party + ')'
-      + '<div style="font-size:11px;color:#777">' + l.chamber + ' District ' + l.district + '</div></td>'
+      + '<div style="font-size:11px;color:#777">' + l.chamber + ' District ' + l.district + '</div>'
+      + '<div class="elecmob">' + elecCell(l) + '</div></td>'
       + '<td class="hidemob cnts">' + l.counties.join(', ') + '</td>'
       + '<td class="num">' + (l.total > 0 ? fmt$(l.total) : '—') + '</td>'
       + '<td>' + badge(st, (p.stance || 'unknown') === 'unknown')
       + (p.note ? '<div style="font-size:11px;color:#555;margin-top:3px">' + esc(p.note)
           + (p.source ? ' <a href="' + esc(p.source) + '" target="_blank" rel="noopener">↗</a>' : '') + '</div>' : '')
-      + '</td></tr>';
+      + '</td>'
+      + '<td class="elec">' + elecCell(l) + '</td></tr>';
   }).join('');
 }
-['q', 'pf', 'cf', 'sf'].forEach(id => {
+['q', 'pf', 'cf', 'sf', 'ef'].forEach(id => {
   document.getElementById(id).addEventListener('input', renderLegis);
   document.getElementById(id).addEventListener('change', renderLegis);
 });
@@ -304,6 +355,17 @@ function stance(txt) {
   return 'unknown';
 }
 // strip "Sen./Del." prefix and any glued-on "(R)Senate District 2" suffix -> bare name
+// map the free-text re-election column to a code (mirrors stance())
+function elecCode(txt, fallback) {
+  const t = (txt || '').toLowerCase();
+  if (t.includes('lost')) return 'lost';
+  if (t.includes('2028') || t.includes('not up')) return 'not_up';
+  if (t.includes('not seeking') || t.includes('retir') || t.includes('not running')) return 'retiring';
+  if (t.includes('verify') || t.includes('unconfirmed')) return 'verify';
+  if (t.startsWith('y') || t.includes('on the ballot') || t.includes('running')) return 'ballot';
+  if (t.startsWith('n')) return 'retiring';
+  return fallback || 'verify';
+}
 function cleanName(txt) {
   return (txt || '')
     .replace(/^\s*(?:(?:legislator|senator|sen|delegate|del)\.?\s+)+/i, '')  // strip stacked "Legislator Sen." prefixes
@@ -356,6 +418,16 @@ function loadSheet() {
         note: (r[4] || '').trim().replace(/^note\s*/i, ''),
         source: realSource((r[5] || '').replace(/^source\s*/i, ''))
       };
+      // optional columns G/H: re-election status and November opponent.
+      // Leave them blank in the sheet to keep the published primary-results data.
+      const upTxt = (r[6] || '').trim(), oppTxt = (r[7] || '').trim();
+      if (upTxt && !/^up in nov/i.test(upTxt)) {
+        const base = ELECTION[match.name] || { s: '', o: '', n: '' };
+        ELECTION[match.name] = { s: elecCode(upTxt, base.s), o: oppTxt || base.o, n: (r[8] || '').trim() || base.n };
+      } else if (oppTxt && !/^november opponent/i.test(oppTxt)) {
+        const base = ELECTION[match.name] || { s: '', o: '', n: '' };
+        ELECTION[match.name] = { s: base.s, o: oppTxt, n: base.n };
+      }
       applied++;
     });
     renderCounties();
